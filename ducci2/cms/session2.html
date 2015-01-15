@@ -270,10 +270,10 @@
 						</div>
 					</section>
 					<section>
-						<h1>Les contenus personnalisés</h1>
+						<h1>Les types de post personnalisés</h1>
 						<div>
 							<ul>
-								<li>Pour adapter les contenus aux besoins</li>
+								<li>Pour adapter les contenus à saisir aux besoins</li>
 								<li>Ils héritent du comportement d'un contenu existant</li>
 								<li>Ils peuvent être publiques ou privés</li>
 								<li>Ils ont un format d'URL particulier basé sur un slug</li>
@@ -284,31 +284,31 @@
 						<h1>Exemple de code</h1>
 						<pre>
 							<code class="php" style="line-height: 1em; max-height: 1000px;">
-				  				function custom_init()
-				  				{
-				  				  //All of these are optional
-				  				  $args = array(
-				  				    'label' => "Nouveau type",
-				  				    'labels' => array(
-				  				      'name' => 'Nouveaux types',
-				  				      'singular_name' => 'Nouveau type'
-				  				    ),
-				  				    'public' => true,
-				  				    'exclude_from_search' => false,
-				  				    'publicly_queryable' => true,
-				  				    'show_ui' => true,
-				  				    'show_in_nav_menus' => true,
-				  				    'show_in_menu' => true,
-				  				    'show_in_admin_bar' => true,
-				  				    'rewrite' => array(
-				  				      'slug' => 'nouveau-type'
-				  				    )
-				  				  );
+  function custom_init()
+  {
+    //All of these are optional
+    $args = array(
+      'label' => "Nouveau type",
+      'labels' => array(
+        'name' => 'Nouveaux types',
+        'singular_name' => 'Nouveau type'
+      ),
+      'public' => true,
+      'exclude_from_search' => false,
+      'publicly_queryable' => true,
+      'show_ui' => true,
+      'show_in_nav_menus' => true,
+      'show_in_menu' => true,
+      'show_in_admin_bar' => true,
+      'rewrite' => array(
+        'slug' => 'nouveau-type'
+      )
+    );
 
-				  				  //Register the newsletter post type.
-				  				  register_post_type( 'custom-type' , $args );
-				  				}
-				  				add_action( 'init', 'custom_init' );
+    //Register the newsletter post type.
+    register_post_type( 'custom-type' , $args );
+  }
+  add_action( 'init', 'custom_init' );
 							</code>
 						</pre>
 					</section>
@@ -338,17 +338,17 @@
 						<div style="text-align: left;">
 							<pre>
 								<code class="css">
-								  /*
-								  Theme Name: Empirik
-								  Author: Stéphane HULARD & Jérôme VADON
-								  Author URI: http://www.chstudio.fr/
-								  Description: Site Web 2013 Empirik
-								  Version: 1.0
-								  License: GNU General Public License
-								  */
+  /*
+  Theme Name: Empirik
+  Author: Stéphane HULARD & Jérôme VADON
+  Author URI: http://www.chstudio.fr/
+  Description: Site Web 2013 Empirik
+  Version: 1.0
+  License: GNU General Public License
+  */
 								</code>
 							</pre>
-							<p>Il est accompagné du fichier <code>screenshot.png</code> qui permet d'avoir un aperçu directement dans l'administration.</p>
+							<p>Il peut être accompagné d'un fichier <code>screenshot.png</code> qui permet d'avoir un aperçu visuel directement dans l'administration.</p>
 						</div>
 					</section>
 					<section>
@@ -410,33 +410,36 @@
 						</div>
 					</section>
 					<section>
-						<h1>Étendre un thème</h1>
+						<h1>Les thèmes enfants</h1>
 						<div>
 							<ul>
 								<li>Il est possible de créer un thème enfant d'un autre thème</li>
 								<ul>
-									<li>Il suffit de rajouter une instruction dans le fichier style.css</li>
-									<pre>
-										<code class="css">
-										  /*
-										  Template: parent-theme
-										  */
-										</code>
-									</pre>
+									<li>Pour surcharger, on duplique les fichiers du parent dans le thème enfant, et ensuite on apporte les modifications.</li>
 									<li>La procédure complète est visible sur le <a href="http://codex.wordpress.org/Child_Themes">Codex</a></li>
 								</ul>
-								<li>Ensuite on duplique les fichiers du thème parent dans le thème enfant, et on apporte les modifications.</li>
+								<li>Il suffit de rajouter une instruction dans le fichier style.css, <code>Template:</code></li>
 							</ul>
+							<pre style="margin: 0px;">
+								<code class="css">
+  /*
+  Template: parent-theme
+  */
+
+  /!\ ------------------
+  Coller ici le contenu du fichier style.css du parent ou utiliser @import
+								</code>
+							</pre>
 						</div>
 					</section>
 					<section>
 						<h1>Avantage de l'héritage</h1>
 						<div>
 							<ul>
-								<li>Assez accessible pour personnaliser un thème</li>
-								<li>On peut partir d'un thème déjà bien construit</li>
+								<li>Pas besoin d'être un "<strong>Wordpress Guru</strong>" pour personnaliser un thème</li>
+								<li>On peut partir d'un thème bien construit et qui répond déjà à nos principaux besoins</li>
 								<li>On isole les modifications apportés pour pouvoir gérer les mises à jour du parent</li>
-								<li>Très bien adapté aux petites modifications sur un thème choisit</li>
+								<li>Complétement adapté aux petites modifications sur un thème choisit</li>
 							</ul>
 						</div>
 					</section>
@@ -446,8 +449,9 @@
 							<p>Parfois, il faut sortir des utilisations standards et des thèmes existants.</p>
 							<ul>
 								<li>Intégrer un design très spécifique peut nécessiter de créer un thème</li>
-								<li>Une plus grande liberté créative et technique</li>
+								<li>Créer avec plus de liberté et apporter des fonctionnalités spécifiques</li>
 							</ul>
+							<p><strong>ATTENTION</strong>: Il vaut mieux créer un thème que transformer complètement un thème parent.</p>
 						</div>
 					</section>
 					<section>
@@ -456,34 +460,39 @@
 							<p>Un thème est au minimum composé de 3 choses :</p>
 							<ul>
 								<li>Un fichier style.css le décrivant</li>
-								<pre><code class="css">
-								/*
-								Theme Name: Truite
-								Author: Moi
-								*/</code></pre>
 								<li>Un fichier index.php pour afficher les contenus</li>
-								<pre><code class="php">
-								&lt;?php
-								the_title();
-								</code></pre>
-								<li>Un répertoire contenant ces deux fichiers et placé dans <code>wp-content/themes</code></li>
+								<li>Un répertoire contenant ces deux fichiers et placé dans <code>wp-content/themes/[mon-theme]</code></li>
+								<li>Le thème est identifé par le nom du répertoire qui le contient</li>
 							</ul>
 						</div>
 					</section>
 					<section>
-						<h1>La boucle</h1>
+						<h1><code>style.css</code></h1>
 						<div style="text-align:left;">
-							<p>"<a href="http://codex.wordpress.org/fr:La_Boucle">La boucle</a>" est un concept technique important de Wordpress qui décrit le principe de récupération des contenus dans une page.</p>
-							<p>Les contenus sont récupérés grâce à des requêtes SQL et affichés grâce à des boucles.</p>
-							<pre><code class="php">
-							&lt;?php
-							if ( have_posts() ) {
-							  while( have_posts() ) { the_post();
-							    the_title();
-							    echo "<br/>";
-							  }
-							}
-							</code></pre>
+							<pre>
+								<code class="css">
+  /*
+  Theme Name: Truite
+  Author: Moi
+  */
+								</code>
+							</pre>
+							<ul>
+								<li><code>Theme Name:</code> pour un nom "User Friendly" du thème</li>
+								<li>Et d'autres instructions pour présenter le thème <code>Author:</code>, <code>Version:</code>, <code>Author:</code>, <code>Licence:</code>...</li>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<h1><code>index.php</code></h1>
+						<div style="text-align:left;">
+							<pre>
+								<code class="php">
+  &lt;?php
+  the_title();
+								</code>
+							</pre>
+							<p>Une instruction simple pour afficher le titre du post en cours. Ce fichier contient toute la logique d'affichage générale.</p>
 						</div>
 					</section>
 					<section>
@@ -498,6 +507,44 @@
 								<li>Personnalisation de l'interface d'administration</li>
 								<li>...</li>
 							</ul>
+						</div>
+					</section>
+					<section>
+						<h1><code>functions.php</code></h1>
+						<div style="text-align:left;">
+							<pre>
+								<code class="php">
+  &lt;?php
+
+  add_editor_style();
+  add_theme_support( 'post-thumbnails' );
+  add_theme_support( 'menus' );
+
+  add_image_size( 'logo-mini', 110, 110, true );
+
+  register_nav_menu( "main", __('Menu principal', 'i18n'));
+  register_nav_menu( "search", __('Recherche d\'annonces', 'i18n'));
+  register_nav_menu( "rent-folder", __('Dossier de candidature locatif', 'i18n'));
+								</code>
+							</pre>
+						</div>
+					</section>
+					<section>
+						<h1>La boucle</h1>
+						<div style="text-align:left;">
+							<p>"<a href="http://codex.wordpress.org/fr:La_Boucle">La boucle</a>" est un concept technique important de Wordpress qui décrit le principe de récupération des contenus dans une page.</p>
+							<p>Les contenus sont récupérés grâce à des requêtes SQL et affichés dans des boucles.</p>
+							<pre>
+								<code class="php">
+  &lt;?php
+  if ( have_posts() ) {
+    while( have_posts() ) { the_post();
+      the_title();
+      echo "<br/>";
+    }
+  }
+								</code>
+							</pre>
 						</div>
 					</section>
 					<section>
@@ -562,14 +609,14 @@
 							<p>Comme pour le thème, la définition du plugin est réalisé grâce à des commentaires...</p>
 							<pre>
 								<code class="php">
-									/*
-									Plugin Name: Hello Dolly
-									Plugin URI: http://wordpress.org/plugins/hello-dolly/
-									Description: This is not just a plugin, it symbolizes the hope and enthusiasm of an entire generation summed up in two words sung most famously by Louis Armstrong: Hello, Dolly. When activated you will randomly see a lyric from <cite>Hello, Dolly</cite> in the upper right of your admin screen on every page.
-									Author: Matt Mullenweg
-									Version: 1.6
-									Author URI: http://ma.tt/
-									*/
+  /*
+  Plugin Name: Hello Dolly
+  Plugin URI: http://wordpress.org/plugins/hello-dolly/
+  Description: This is not just a plugin, it symbolizes the hope and enthusiasm of an entire generation summed up in two words sung most famously by Louis Armstrong: Hello, Dolly. When activated you will randomly see a lyric from <cite>Hello, Dolly</cite> in the upper right of your admin screen on every page.
+  Author: Matt Mullenweg
+  Version: 1.6
+  Author URI: http://ma.tt/
+  */
 								</code>
 							</pre>
 							<p>Ensuite, dans ce fichier toutes les actions nécessaire au fonctionnement du plugin sont effectuées.</p>
@@ -625,7 +672,6 @@
 <!--#########################################################################-->
 				<section data-background-color="rgba( 0, 174, 239, 0.6 )">
 					<h1>Merci pour votre attention</h1>
-					<p>Des questions ?</p>
 				</section>
 			</div>
 
