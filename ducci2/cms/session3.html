@@ -48,7 +48,7 @@
 			<div class="slides">
 				<section data-background-color="rgba( 0, 174, 239, 0.6 )">
 					<h1>Systèmes de gestion de contenu</h1>
-					<p>Plus loin dans l'API Wordpress</p>
+					<p>Créer un thème à partir d'un template HTML</p>
 					<p><small>Session 3</small></p>
 				</section>
 				<section id="who-i-am" data-background-color="rgba( 0, 174, 239, 0.6 )">
@@ -65,17 +65,58 @@
 					<h1>Pendant ce cours...</h1>
 					<div>
 						<ol>
+							<li>Comment structurer le thème</li>
 							<li>Gestion des assets (JS, CSS)</li>
-							<li>Les <code>filters</code>, pourquoi, comment ?</li>
-							<li>Gestion des traductions</li>
+							<li><code>actions</code> et <code>filters</code></li>
 							<li>Gestion des médias</li>
+							<li>Gestion des traductions</li>
 						</ol>
 					</div>
 				</section>
 <!--1-------------------------------------------------------------------------->
 				<section class="stack">
 					<section>
-						<h1>1. Gestion des assets (JS, CSS)</h1>
+						<h1>1. Comment structurer le thème</h1>
+					</section>
+					<section>
+						<h1>Comprendre les gabarits</h1>
+						<div style="text-align: left;">
+							<p>Un template est un représentation complète des possibilités offertes pour afficher les contenus. Il faut bien prendre en compte toutes les contraintes.</p>
+							<ul>
+								<li>Les header/footers contiennent le plus grand dénominateur commun de tous les gabarits</li>
+								<li>Que sera la page d'accueil, une page statique, une page fixe ?</li>
+								<li>Quel fichier créer pour répondre à mes besoins ?</li>
+								<li>Est-ce que je dois créer <code>index.php</code> ?</li>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<h1>Des gabarits ?</h1>
+						<div style="text-align: left;">
+							<ul>
+								<li>Quand on parle de système de gestion de contenu on parle de gabarits.</li>
+								<li>Il représente les modèles de page</li>
+								<li>Ils contiennent toute la logique d'affichage</li>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<h1>Identifier les blocs dupliqués</h1>
+						<div style="text-align: left;">
+							<p>Il arrive qu'on retrouve dans différents gabarits le même bloc qui affiche les mêmes informations.<br/>Même s'il est placé à un endroit différent ou avec un style un peu adapté, il est important de créer un fichier réutilisable</p>
+							<ul>
+								<li>Optimiser la maintenance</li>
+								<li>Généraliser les règles de gestion</li>
+								<li>Faciliter l'intégration</li>
+								<li>Éviter la duplication (<a href="http://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas">DRY</a>)</li>
+							</ul>
+						</div>
+					</section>
+				</section>
+<!--2-------------------------------------------------------------------------->
+				<section class="stack">
+					<section>
+						<h1>2. Gestion des assets (JS, CSS)</h1>
 					</section>
 					<section>
 						<h1>Les assets ??</h1>
@@ -101,6 +142,171 @@
 							</p>
 						</div>
 					</section>
+					<section>
+						<h1>Les méthodes</h1>
+						<div style="text-align: left;">
+							<ul>
+								<li>
+									Pour déclarer un style/script mais sans le charger directement.
+								</li>
+								<ul>
+									<li><a href="http://codex.wordpress.org/Function_Reference/wp_register_style"><code>wp_register_style</code></a></li>
+									<li><a href="http://codex.wordpress.org/Function_Reference/wp_register_script"><code>wp_register_script</code></a></li>
+								</ul>
+								<li>
+									Pour déclarer un style/script à charger dans la page en cours.
+								</li>
+								<ul>
+									<li><a href="http://codex.wordpress.org/Function_Reference/wp_enqueue_style"><code>wp_enqueue_style</code></a></li>
+									<li><a href="http://codex.wordpress.org/Function_Reference/wp_enqueue_script"><code>wp_enqueue_script</code></a></li>
+								</ul>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<h1>Exemple</h1>
+						<div style="text-align: left;">
+							<pre><code class="php">
+  wp_register_style('mon-style', get_stylesheet_directory_uri().'/style.css');
+  wp_enqueue_style('mon-style');
+
+  wp_enqueue_script('script1', get_stylesheet_directory_uri().'/js/script1.js');
+							</code></pre>
+							<p>Ensuite on laisse la magie de Wordpress opérer avec <a href="http://codex.wordpress.org/Function_Reference/wp_head"><code>wp_head</code></a> et <a href="http://codex.wordpress.org/Function_Reference/wp_footer"><code>wp_footer</code></a></p>
+						</div>
+					</section>
+				</section>
+<!--3-------------------------------------------------------------------------->
+				<section class="stack">
+					<section>
+						<h1>3. <code>actions</code> et <code>filters</code></h1>
+					</section>
+					<section>
+						<h1>Un concept intéressant</h1>
+						<div style="text-align: left;">
+							<p>Dans le coeur Wordpress, des actions sont "appliquées" partouts.</p>
+							<ul>
+								<li>Elles permettent d'insérer du code pour manipuler le comportement de base</li>
+								<li>Elles sont utiles dans le template ou dans l'admin</li>
+							</ul>
+							<p>Elles apportent une grande modularité dans la gestion du site.</p>
+						</div>
+					</section>
+					<section>
+						<h1>Mais une complexité importante</h1>
+						<div style="text-align: left;">
+							<p>Le code à écrire pour les utiliser n'est pas très simple et le comportement des actions n'est pas toujours très bien documenté</p>
+							<ul>
+								<li>Création de fonction de callback</li>
+								<li>Liste de paramètre obscure</li>
+								<li>Modification à apporter pas toujours identiques</li>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<h1>Exemple</h1>
+						<div style="text-align: left;">
+						<pre><code class="php">
+  function ek_theme_setup()
+  {
+    //Load localisation
+    load_theme_textdomain('ek', get_template_directory() . '/languages');
+
+    //Enhance theme support
+    add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'menus' );
+
+    //Register specific image sizes
+    add_image_size( 'blog-thumb', 136, 126, true );
+  }
+  add_action( 'after_setup_theme', 'ek_theme_setup' );
+  						</code></pre>
+  						<p>Pour une liste de toutes les actions, voir sur le <a href="http://codex.wordpress.org/Plugin_API/Action_Reference">Codex</a></p>
+						</div>
+					</section>
+					<section>
+						<h1>Idem pour les <code>filters</code></h1>
+						<div style="text-align: left;">
+							<p>Les <code>filters</code> sont utilisés partout dans Wordpress. Contrairement aux actions, ils sont appliqués à chaque traitement sur les données pour permettre de les manipuler.</p>
+						<pre><code class="php">
+  function wpse_custom_order($clauses)
+  {
+    global $wp_query;
+
+    // check for order by custom_order
+    if (isset($clauses['where']) && strpos($clauses['where'], 'postmeta.meta_key') !== false ) {
+      $clauses['join'] = str_replace('INNER JOIN', 'LEFT JOIN', $clauses['join']).$clauses['where'];
+      $clauses['where'] = '';
+    }
+    return $clauses;
+  }
+  add_filter('get_meta_sql', 'wpse_custom_order', 10, 1);
+  						</code></pre>
+						</div>
+					</section>
+				</section>
+<!--4-------------------------------------------------------------------------->
+				<section class="stack">
+					<section>
+						<h1>4. Gestion des médias</h1>
+					</section>
+					<section>
+						<h1>Les utiliser dans les templates</h1>
+						<div style="text-align: left;">
+							<p>Les médias renseignés dans la bibliothèque peuvent être utilisés dans les templates en affichage (bandeau de header par exemple)</p>
+							<pre><code class="php">
+  //Afficher l'image 1 en taille full
+  wp_get_attachment_image(1, 'full');
+
+  //Récupérer l'URL de l'image 18 en taille thumbnail
+  wp_get_attachment_image_src(1, 'thumbnail');
+							</code></pre>
+						</div>
+					</section>
+					<section>
+						<h1>Générer des formats spécifiques</h1>
+						<div style="text-align: left;">
+							<p>Il peut être intéressant de définir des formats d'image spécifiques pour optimiser les chargement des page.</p>
+							<p>On ajoute dans le fichier <code>functions.php</code>:</p>
+							<pre><code class="php">
+  //Format 136x126 avec crop
+  add_image_size( 'blog-thumb', 136, 126, true );
+							</code></pre>
+							<p>Et on utilise de la même façon:</p>
+							<pre><code class="php">
+  //Format 136x126 avec crop
+  wp_get_attachment_image(1, 'blog-thumb');
+							</code></pre>
+						</div>
+					</section>
+				</section>
+<!--5-------------------------------------------------------------------------->
+				<section class="stack">
+					<section>
+						<h1>5. Gestion des traductions</h1>
+					</section>
+					<section>
+						<h1>Gettext comme format de fichier</h1>
+						<div style="text-align: left;">
+							<p>Wordpress utilise un sytème de traduction pour tous les libellés d'interface.<br/>C'est ce système qui permet de voir l'interface d'administration en différente langue.</p>
+							<p>Les fichiers de langue sont au format <code>gettext</code>. J'utilise le logiciel "<a href="https://poeditor.com/">Poedit</a>" pour les manipuler.</p>
+							<p>La documentation est assez complète sur cette partie: <a href="http://codex.wordpress.org/Translating_WordPress">Codex</a>, <a href="https://make.wordpress.org/polyglots/handbook/translating/basics/">Wordpress community</a></p>
+						</div>
+					</section>
+					<section>
+						<h1>Charger un dictionnaire</h1>
+						<div style="text-align: left;">
+							<p>On peut charger un dictionnaire dépendant de la <code>locale</code> en cours:</p>
+							<pre><code class="php">
+  load_theme_textdomain( 'domain', get_template_directory() . '/languages' );
+							</code></pre>
+							<p>Ou alors charger un dictionnaire directement:</p>
+							<pre><code class="php">
+  load_textdomain( 'domain', dirname(__FILE__) . '/lang/fr.mo' );
+							</code></pre>
+						</div>
+					</section>
+				</section>
 <!--#########################################################################-->
 				<section data-background-color="rgba( 0, 174, 239, 0.6 )">
 					<h1>Merci pour votre attention</h1>
