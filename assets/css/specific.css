@@ -1,3 +1,7 @@
+.reveal {
+	font-size: 34px;
+}
+
 .reveal .fa {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
@@ -82,4 +86,8 @@ body.print-pdf .reveal .global-footer {
 
 .reveal h1 {
 	font-size: 2.5em;
+}
+
+.reveal td {
+	vertical-align: middle;
 }
