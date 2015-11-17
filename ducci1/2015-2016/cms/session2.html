@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>DUCCI - Systèmes de gestion de contenu</title>
+
+    <meta name="description" content="Un cours pour présenter les systèmes de gestion de contenu, leur intérêt et leur fonctionnement général...">
+    <meta name="author" content="Stéphane HULARD">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../../../reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../../../reveal.js/css/theme/moon.css" id="theme">
+    <link rel="stylesheet" href="../../../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../assets/css/specific.css">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="../../../reveal.js/lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="../../../reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal concave center">
+      <p class="global-footer">
+        <img src="../../../logo.png" width="20" />
+        2015/2016&nbsp;-&nbsp;ICOM Université Lyon 2&nbsp;-&nbsp;DUCCI
+      </p>
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section data-background-color="rgba( 0, 174, 239, 0.6 )">
+          <h1>Systèmes de gestion de contenu</h1>
+          <p>Un exemple concret avec Wordpress</p>
+          <p><small>Session 2</small></p>
+        </section>
+        <section id="who-i-am" data-background-color="rgba( 0, 174, 239, 0.6 )">
+          <h1>Stéphane HULARD<br/><small>Consultant technique web</small></h1>
+          <br/>
+          <p><span class="fa fa-building-o">&nbsp;</span> <a href="http://chstudio.fr">http://chstudio.fr</a></p>
+          <p><span class="fa fa-twitter-square">&nbsp;</span> <a href="https://twitter.com/s_hulard">@s_hulard</a></p>
+          <p><span class="fa fa-github-square">&nbsp;</span> <a href="http://github.com/shulard">http://github.com/shulard</a></p>
+          <br/>
+          <p><span class="fa fa-suitcase">&nbsp;</span> <a href="mailto:s.hulard@chstudio.fr">s.hulard@chstudio.fr</a></p>
+          <p><span class="fa fa-university">&nbsp;</span> <a href="mailto:s.hulard@univ-lyon2.fr">s.hulard@univ-lyon2.fr</a></p>
+        </section>
+<!--#########################################################################-->
+        <section>
+          <h1>Pendant ce cours...</h1>
+          <div>
+            <ol>
+              <li>Installer Wordpress</li>
+              <li>Éditer les contenus</li>
+              <li>Créer son thème</li>
+              <li>Gérer ses plugins</li>
+              <li>Et ensuite ?</li>
+            </ol>
+          </div>
+        </section>
+<!--1-------------------------------------------------------------------------->
+        <section class="stack">
+          <section>
+            <h1>1. Installer Wordpress</h1>
+          </section>
+          <section>
+            <h1>Comment ça tourne ?</h1>
+            <div style="text-align: left;">
+              <p>Wordpress est une application web écrite en PHP.<br/>Elle nécessite un hébergement web et quelques logiciels :</p>
+              <ul>
+                <li>Un serveur web</li>
+                <li>Un système de gestion de base de données</li>
+                <li>PHP</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>WAMP, LAMP, XAMPP, EasyPHP...</h1>
+            <div style="text-align: left;">
+              <p>Beaucoup d'outils différents mais une base Open Source commune...</p>
+              <ul>
+                <li><a href="http://httpd.apache.org/">Apache</a>: Un serveur HTTP</li>
+                <li><a href="http://php.net/">PHP</a>: Un langage pour des pages webs dynamiques</li>
+                <li><a href="http://www.mysql.fr/">MySQL</a>: Un SGBD</li>
+              </ul>
+              <p><br/>Qu'il faut installer pour commencer!</p>
+            </div>
+          </section>
+          <section>
+            <h1>Créer une base de données</h1>
+            <div style="text-align: left;">
+              <p>Il faut se connecter à MySQL pour créer une base de données.</p>
+              <ul>
+                <li>En ligne de commande :</li>
+                <pre><code class="shell">echo "CREATE DATABASE wordpress" | mysql -u root -p</code></pre>
+                <li>Ou avec un éditeur graphique :</li>
+                <ul>
+                  <li><a href="http://www.phpmyadmin.net/">PHPMyAdmin</a></li>
+                  <li><a href="http://www.adminer.org/">Adminer</a></li>
+                  <li><a href="http://www.sequelpro.com/">Sequel Pro</a></li>
+                  <li><a href="http://www.mysql.fr/products/workbench/">MySQL WorkBench</a></li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Télécharger Wordpress</h1>
+            <div style="text-align: left;">
+              <p>Wordpress peut être téléchargé directement sur le site officiel :</p>
+              <ul>
+                <li>En anglais: <a href="https://wordpress.org/">https://wordpress.org/</a></li>
+                <li>En français: <a href="https://fr.wordpress.org/">https://fr.wordpress.org/</a></li>
+              </ul>
+              <img src="img/session2/wordpress-officiel.png" />
+            </div>
+          </section>
+          <section>
+            <h1>Mettre en place le code source</h1>
+            <div style="text-align: left;">
+            <ul>
+              <li>Il faut décompresser le ZIP et placer le répertoire à la racine du serveur web.</li>
+              <ul>
+                <li>Pour WAMP c'est dans <code>C:\wamp\www</code></li>
+                <li>Pour MAMP dans <code>/Applications/MAMP/htdocs</code></li>
+              </ul>
+              <li>En le placant de cette façon on obtiendra une URL du type: <code>http://localhost/[wordpress]</code></li>
+            </ul>
+          </section>
+          <section>
+            <h1>Voir le résultat</h1>
+            <div>
+              <img src="img/session2/wordpress-install.png" />
+            </div>
+          </section>
+          <section>
+            <h1>On avance</h1>
+            <div>
+              <img src="img/session2/wordpress-info.png" />
+            </div>
+          </section>
+          <section>
+            <h1>Et on configure</h1>
+            <div>
+              <img src="img/session2/wordpress-details.png" />
+            </div>
+          </section>
+          <section>
+            <h1>Une fois validé</h1>
+            <div>
+              <img src="img/session2/wordpress-ready.png" />
+            </div>
+          </section>
+          <section>
+            <h1>Dernière étape</h1>
+            <div>
+              <img src="img/session2/wordpress-site.png" style="max-width: 67%"/>
+            </div>
+          </section>
+          <section>
+            <h1>Et le site fonctionne !</h1>
+            <div>
+              <img src="img/session2/wordpress-live.png"/>
+            </div>
+          </section>
+          <section>
+            <h1>Quelques informations...</h1>
+            <div style="text-align: left;">
+              <ul>
+                <li>L'interface d'administration est accessible dans le répertoire <code>wp-admin</code> du site</li>
+                <ul>
+                  <li><code>http://localhost/wordpress/wp-admin/</code></li>
+                </ul>
+                <li>Le site est à la racine</li>
+                <ul>
+                  <li><code>http://localhost/wordpress/</code></li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Structure de répertoire de base</h1>
+            <div style="text-align: left;">
+              <ul>
+                <li><code>wp-admin</code>, pour l'administration du CMS</li>
+                <li><code>wp-content</code>, pour les contenus, thèmes, plugins hors BDD</li>
+                <li><code>wp-config.php</code>, pour la configuration générale</li>
+                <li><code>index.php</code>, comme contrôleur principal</li>
+              </ul>
+              <img src="img/session2/wordpress-folder.png" />
+            </div>
+          </section>
+        </section>
+<!--2-------------------------------------------------------------------------->
+        <section class="stack">
+          <section>
+            <h1>2. Éditer les contenus</h1>
+          </section>
+          <section>
+            <h1>Connexion à l'administration</h1>
+            <div>
+              <img src="img/session2/wordpress-connect.png" style="max-width: 46%"/>
+            </div>
+          </section>
+          <section>
+            <div>
+              <img src="img/session2/wordpress-dashboard.png" />
+            </div>
+          </section>
+          <section>
+            <h1>Les contenus</h1>
+            <div>
+              <ul>
+                <li>Les contenus sont séparés en différents types</li>
+                <ul>
+                  <li>Post</li>
+                  <li>Pages</li>
+                  <li>Médias</li>
+                  <li>Commentaires</li>
+                </ul>
+                <li>Chaque type peut avoir des "taxonomies" pour grouper les informations entre elles :</li>
+                <ul>
+                  <li>Catégories</li>
+                  <li>Tags</li>
+                </ul>
+                <li>Il est possible de créer des types de contenu et des taxonomies personnalisées</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Les posts</h1>
+            <div style="text-align: left;">
+              <ul>
+                <li>Ils sont à la base de Wordpress car ils représentent généralement des articles de blog.</li>
+                <li>Ils ne peuvent pas être arborescent les uns par rapport aux autres et peuvent être catégorisés par défaut.</li>
+                <li>Par défaut ce sont les seuls contenus sur lesquels il est possible de commenter.</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Les pages</h1>
+            <div style="text-align: left;">
+              <ul>
+                <li>Elles permettent de créer une arborescence de contenu moins éphémère que les articles.</li>
+                <li>Elle ne sont pas catégorisables par défaut.</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Les médias</h1>
+            <div style="text-align: left;">
+              <ul>
+                <li>Ce sont les images de contenus et/ou d'interfaces. Elles sont ajoutées dans une bibliothèques de médias et il est possible de générer plusieurs formats en fonction des besoins du site.</li>
+                <li>Il est aussi possible d'ajouter des documents autres et de faire des liens vers eux à partir des contenus.</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Les contenus personnalisés</h1>
+            <div>
+              <ul>
+                <li>Pour adapter les contenus aux besoins</li>
+                <li>Ils héritent du comportement d'un contenu existant</li>
+                <li>Ils peuvent être publiques ou privés</li>
+                <li>Ils ont un format d'URL particulier basé sur un slug</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Exemple de code</h1>
+            <pre>
+              <code class="php" style="line-height: 1em; max-height: 1000px;">
+                  function custom_init()
+                  {
+                    //All of these are optional
+                    $args = array(
+                      'label' => "Nouveau type",
+                      'labels' => array(
+                        'name' => 'Nouveaux types',
+                        'singular_name' => 'Nouveau type'
+                      ),
+                      'public' => true,
+                      'exclude_from_search' => false,
+                      'publicly_queryable' => true,
+                      'show_ui' => true,
+                      'show_in_nav_menus' => true,
+                      'show_in_menu' => true,
+                      'show_in_admin_bar' => true,
+                      'rewrite' => array(
+                        'slug' => 'nouveau-type'
+                      )
+                    );
+
+                    //Register the newsletter post type.
+                    register_post_type( 'custom-type' , $args );
+                  }
+                  add_action( 'init', 'custom_init' );
+              </code>
+            </pre>
+          </section>
+        </section>
+<!--3-------------------------------------------------------------------------->
+        <section class="stack">
+          <section>
+            <h1>3. Créer son thème</h1>
+          </section>
+          <section>
+            <h1>Un thème ?</h1>
+            <div>
+              <ul>
+                <li>C'est un ensemble de fichier permettant d'afficher les contenus à l'utilisateur</li>
+                <li>Les thèmes Wordpress respectent des règles adaptées à chaque type de contenu</li>
+                <ul>
+                  <li>Ils sont écrits en PHP</li>
+                  <li>Le fichier style.css définit ce qu'est le thème</li>
+                  <li>Les fichiers sont nommés selon leur utilité</li>
+                  <li>Un système de fallback permet de créer des thèmes très simples ou très complexes</li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Le fichier style.css</h1>
+            <div style="text-align: left;">
+              <pre>
+                <code class="css">
+                  /*
+                  Theme Name: Empirik
+                  Author: Stéphane HULARD & Jérôme VADON
+                  Author URI: http://www.chstudio.fr/
+                  Description: Site Web 2013 Empirik
+                  Version: 1.0
+                  License: GNU General Public License
+                  */
+                </code>
+              </pre>
+              <p>Il est accompagné du fichier <code>screenshot.png</code> qui permet d'avoir un aperçu directement dans l'administration.</p>
+            </div>
+          </section>
+          <section>
+            <h1>Structure d'un thème</h1>
+            <div>
+              <p>Elle est complétement détaillée sur le <a href="http://codex.wordpress.org/Theme_Development">Wordpress Codex</a> !</p>
+              <ul>
+                <li><code>header.php</code>, l'entête de la page</li>
+                <li><code>footer.php</code>, le pied de la page</li>
+                <li><code>index.php</code>, page d'accueil et template par défaut</li>
+                <li><code>single.php</code>, post seul</li>
+                <li><code>page.php</code>, page seule</li>
+                <li><code>archive.php</code>, <code>category.php</code>, <code>tag.php</code></li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <img src="img/session2/template-hierarchy.jpg" style="max-width:125%; max-height:125%; margin-left: -12.5%; margin-top: -5%" />
+          </section>
+          <section>
+            <h1>Le configurateur</h1>
+            <div style="text-align: left;">
+              <ul>
+                <li>Si vous sélectionnez "Apparence > Personnaliser" dans l'administration, vous ouvrez le configurateur</li>
+                <li>Il permet de modifier rapidement l'apparence du thème en cours</li>
+                <li>Cette interface affiche un aperçu des modifications en direct</li>
+                <li>Les possibilités de cet écran son définies dans le thème directement</li>
+              </ul>
+              <img src="img/session2/wordpress-configurateur.png" />
+            </div>
+          </section>
+          <section>
+            <h1>Les thèmes gratuits et payants</h1>
+            <div style="text-align: left;">
+              <p>Il existe des milliers de thèmes sur le web référencés dans des annuaires. Ils apportent des solutions professionnelles et permettent souvent de ne pas partir de rien.</p>
+              <ul>
+                <li>Certains sont gratuits :</li>
+                <ul>
+                  <li><a href="https://wordpress.org/themes/">https://wordpress.org/themes/</a></li>
+                  <li><a href="http://theme.wordpress.com/">http://theme.wordpress.com/</a></li>
+                  <li><a href="http://wpmarmite.com/theme-wordpress-gratuit/">http://wpmarmite.com/theme-wordpress-gratuit/</a></li>
+                </ul>
+                <li>D'autres payants :</li>
+                <ul>
+                  <li><a href="http://themeforest.net/category/wordpress">http://themeforest.net/category/wordpress</a></li>
+                  <li><a href="http://wp-infinity.com/theme-wordpress-premium/">http://wp-infinity.com/theme-wordpress-premium/</a></li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Installer un thème</h1>
+            <div>
+              <ul>
+                <li>Dans la page "Apparence > Thèmes", la liste des thèmes installés est visible.</li>
+                <li>Le bouton ajouter permet de chercher et installer des thèmes gratuits sur Wordpress.org.</li>
+              </ul>
+              <img src="img/session2/wordpress-themes.png" />
+            </div>
+          </section>
+          <section>
+            <h1>Étendre un thème</h1>
+            <div>
+              <ul>
+                <li>Il est possible de créer un thème enfant d'un autre thème</li>
+                <ul>
+                  <li>Il suffit de rajouter une instruction dans le fichier style.css</li>
+                  <pre>
+                    <code class="css">
+                      /*
+                      Template: parent-theme
+                      */
+                    </code>
+                  </pre>
+                  <li>La procédure complète est visible sur le <a href="http://codex.wordpress.org/Child_Themes">Codex</a></li>
+                </ul>
+                <li>Ensuite on duplique les fichiers du thème parent dans le thème enfant, et on apporte les modifications.</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Avantage de l'héritage</h1>
+            <div>
+              <ul>
+                <li>Assez accessible pour personnaliser un thème</li>
+                <li>On peut partir d'un thème déjà bien construit</li>
+                <li>On isole les modifications apportés pour pouvoir gérer les mises à jour du parent</li>
+                <li>Très bien adapté aux petites modifications sur un thème choisit</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Créer son propre thème</h1>
+            <div style="text-align:left;">
+              <p>Parfois, il faut sortir des utilisations standards et des thèmes existants.</p>
+              <ul>
+                <li>Intégrer un design très spécifique peut nécessiter de créer un thème</li>
+                <li>Une plus grande liberté créative et technique</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Mon premier thème</h1>
+            <div style="text-align:left;">
+              <p>Un thème est au minimum composé de 3 choses :</p>
+              <ul>
+                <li>Un fichier style.css le décrivant</li>
+                <pre><code class="css">
+                /*
+                Theme Name: Truite
+                Author: Moi
+                */</code></pre>
+                <li>Un fichier index.php pour afficher les contenus</li>
+                <pre><code class="php">
+                &lt;?php
+                the_title();
+                </code></pre>
+                <li>Un répertoire contenant ces deux fichiers et placé dans <code>wp-content/themes</code></li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>La boucle</h1>
+            <div style="text-align:left;">
+              <p>"<a href="http://codex.wordpress.org/fr:La_Boucle">La boucle</a>" est un concept technique important de Wordpress qui décrit le principe de récupération des contenus dans une page.</p>
+              <p>Les contenus sont récupérés grâce à des requêtes SQL et affichés grâce à des boucles.</p>
+              <pre><code class="php">
+              &lt;?php
+              if ( have_posts() ) {
+                while( have_posts() ) { the_post();
+                  the_title();
+                  echo "<br/>";
+                }
+              }
+              </code></pre>
+            </div>
+          </section>
+          <section>
+            <h1><code>functions.php</code></h1>
+            <div style="text-align:left;">
+              <p>Élément important des thèmes, ce fichier permet de définir le comportement technique du thème.</p>
+              <p>Il contient l'intialisation et la personnalisation de Wordpress :</p>
+              <ul>
+                <li>Styles spécifiques dans l'éditeur WYSIWYG</li>
+                <li>Formats d'images personnalisés</li>
+                <li>Enregistrement des types de contenus et des taxonomies</li>
+                <li>Personnalisation de l'interface d'administration</li>
+                <li>...</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Facile non ?</h1>
+            <div style="text-align:left;">
+              <p>La documentation autour de la création de thèmes est très riche et partiellement traduite en français.</p>
+              <p>L'étude des thèmes existants est un bon point de départ pour découvir les différentes possibilités cachées...</p>
+              <p>Il ne reste plus qu'à y aller!</p>
+            </div>
+          </section>
+        </section>
+<!--4-------------------------------------------------------------------------->
+        <section class="stack">
+          <section>
+            <h1>4. Gérer ses plugins</h1>
+          </section>
+          <section>
+            <h1>Les plugins ?</h1>
+            <div style="text-align: left;">
+              <p>Les plugins sont des morceaux de code permettant d'ajouter des fonctionnalités à Wordpress :</p>
+              <ul>
+                <li>Création de diaporama</li>
+                <li>Ajout de shortcode, éditeur complexe</li>
+                <li>Référencement, statistiques</li>
+                <li>Gestion de droits</li>
+                <li>E-commerce</li>
+                <li>...</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Où les trouver</h1>
+            <div style="text-align: left;">
+              <p>Comme pour les thèmes, il est possible d'en installer directement depuis Wordpress. Ils sont principalement référencés sur Wordpress.org.</p>
+              <ul>
+                <li><a href="https://wordpress.org/plugins/">https://wordpress.org/plugins/</a></li>
+                <li><a href="http://wpchannel.com/category/ressources/plugins-wordpress/">http://wpchannel.com/category/ressources/plugins-wordpress/</a></li>
+              </ul>
+              <p>Il existe énormément de plugins gratuit qui sont de qualité très variable...</p>
+            </div>
+          </section>
+          <section>
+            <h1>Créer un plugin</h1>
+            <div style="text-align: left;">
+              <p>Un plugin peut se présenter sous deux formes différentes :</p>
+              <ul>
+                <li>Un fichier PHP unique nommé [plugin].php</li>
+                <ul>
+                  <li>Exemple hello.php</li>
+                </ul>
+                <li>Un répertoire contenant au moins un fichier [plugin].php ou index.php</li>
+                <ul>
+                  <li>Exemple askimet/askimet.php</li>
+                </ul>
+              </ul>
+              <p>Ils sont toujours placé dans <code>wp-content/plugins</code></p>
+            </div>
+          </section>
+          <section>
+            <h1>Définition d'un plugin</h1>
+            <div style="text-align: left;">
+              <p>Comme pour le thème, la définition du plugin est réalisé grâce à des commentaires...</p>
+              <pre>
+                <code class="php">
+                  /*
+                  Plugin Name: Hello Dolly
+                  Plugin URI: http://wordpress.org/plugins/hello-dolly/
+                  Description: This is not just a plugin, it symbolizes the hope and enthusiasm of an entire generation summed up in two words sung most famously by Louis Armstrong: Hello, Dolly. When activated you will randomly see a lyric from <cite>Hello, Dolly</cite> in the upper right of your admin screen on every page.
+                  Author: Matt Mullenweg
+                  Version: 1.6
+                  Author URI: http://ma.tt/
+                  */
+                </code>
+              </pre>
+              <p>Ensuite, dans ce fichier toutes les actions nécessaire au fonctionnement du plugin sont effectuées.</p>
+            </div>
+          </section>
+          <section>
+            <h1>Quelques-uns vraiment utiles</h1>
+            <div style="text-align: left;">
+              <p>Il est parfois difficile de trouver le bon plugin, voici une liste de plugins validés et solides</p>
+              <ul>
+                <li><a href="http://akismet.com/">Askimet</a></li>
+                <ul>
+                  <li>Pour bloquer le spam sur les formulaires de commentaire</li>
+                </ul>
+                <li><a href="http://www.advancedcustomfields.com/">Advanced Custom Fields</a></li>
+                <ul>
+                  <li>Pour créer des interfaces de saisies personnalisées</li>
+                </ul>
+                <li><a href="https://yoast.com/wordpress/plugins/seo/">SEO Wordpress</a></li>
+                <ul>
+                  <li>Pour fiabilier le SEO et améliorer la pertinence des contenus</li>
+                </ul>
+                <li><a href="https://wordpress.org/plugins/contact-form-7/">Contact Form 7</a></li>
+                <li><a href="http://gndev.info/shortcodes-ultimate/">Shortcodes Ultimate</a></li>
+              </ul>
+            </div>
+          </section>
+        </section>
+<!--5-------------------------------------------------------------------------->
+        <section class="stack">
+          <section>
+            <h1>5. Et ensuite ?</h1>
+          </section>
+          <section>
+            <h1>Créer des projets</h1>
+            <div style="text-align:left;">
+              <p>Vous savez comment installer et mettre en place Wordpress sur un espace web. Il ne reste plus qu'à démarrer de nouveaux projets basés sur cet outil!</p>
+            </div>
+          </section>
+          <section>
+            <h1>Échanger</h1>
+            <div style="text-align:left;">
+              <p>Si vous avez des questions ou des problèmes, n'hésitez pas à revenir vers moi, j'essaierai de vous répondre...</p>
+            </div>
+          </section>
+          <section>
+            <h1>Utiliser</h1>
+            <div style="text-align:left;">
+              <p>C'est en l'utilisant que vous découvrirez toutes les possibilités de l'outil. Il faut le bidouiller, le mettre à mal, et finalement exploiter au maximum ses fonctionnalités!</p>
+            </div>
+          </section>
+        </section>
+<!--#########################################################################-->
+        <section data-background-color="rgba( 0, 174, 239, 0.6 )">
+          <h1>Merci pour votre attention</h1>
+          <p>Des questions ?</p>
+        </section>
+      </div>
+
+    </div>
+
+    <script src="../../../reveal.js/lib/js/head.min.js"></script>
+    <script src="../../../reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: false,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: '../../../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../../../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../../../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '../../../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '../../../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+  </body>
+</html>
