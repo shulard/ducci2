@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>DUCCI - Systèmes de gestion de contenu</title>
+
+    <meta name="description" content="Un cours pour présenter les systèmes de gestion de contenu, leur intérêt et leur fonctionnement général...">
+    <meta name="author" content="Stéphane HULARD">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="../../../reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../../../reveal.js/css/theme/moon.css" id="theme">
+    <link rel="stylesheet" href="../../../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../assets/css/specific.css">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="../../../reveal.js/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? '../../../reveal.js/css/print/pdf.css' : '../../../reveal.js/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="../../../reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal concave center">
+      <p class="global-footer">
+        <img src="../../../logo.png" width="20" />
+        2014/2015&nbsp;-&nbsp;ICOM Université Lyon 2&nbsp;-&nbsp;DUCCI 2
+      </p>
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section data-background-color="rgba( 0, 174, 239, 0.6 )">
+          <h1>Gestion d'entreprise</h1>
+          <p>Une première approche</p>
+          <p><small>Session 1</small></p>
+        </section>
+        <section id="who-i-am" data-background-color="rgba( 0, 174, 239, 0.6 )">
+          <h1>Stéphane HULARD<br/><small>Consultant technique web</small></h1>
+          <p><span class="fa fa-building-o">&nbsp;</span> <a href="http://chstudio.fr">http://chstudio.fr</a></p>
+          <p><span class="fa fa-twitter-square">&nbsp;</span> <a href="https://twitter.com/s_hulard">@s_hulard</a></p>
+          <p><span class="fa fa-github-square">&nbsp;</span> <a href="http://github.com/shulard">http://github.com/shulard</a></p>
+          <br/>
+          <p><span class="fa fa-suitcase">&nbsp;</span> <a href="mailto:s.hulard@chstudio.fr">s.hulard@chstudio.fr</a></p>
+          <p><span class="fa fa-university">&nbsp;</span> <a href="mailto:s.hulard@univ-lyon2.fr">s.hulard@univ-lyon2.fr</a></p>
+        </section>
+<!--#########################################################################-->
+        <section>
+          <h1>Pendant ce cours...</h1>
+          <div>
+            <ol>
+              <li>Tour&nbsp;d'ensemble</li>
+              <li>Se vendre</li>
+              <li>Un cas projet&nbsp;concret</li>
+            </ol>
+          </div>
+        </section>
+<!--1-------------------------------------------------------------------------->
+        <section class="stack">
+          <section>
+            <h1>1. Tour d'ensemble</h1>
+          </section>
+          <section>
+            <h1>Un expert, non. mais des conseils</h1>
+            <div style="text-align: left;">
+              <ul>
+                <li>Différents types de structure</li>
+                <li>Connaitre les mécanismes légaux</li>
+                <li>Estimer ses charges</li>
+                <li>Cadrer un projet et le vendre</li>
+                <li>Suivi au quotidien (trésorerie, facturation, devis...)</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Une bible pour les indépendants</h1>
+            <div style="text-align: left;">
+              <ul>
+                <li><a href="http://kitdesurvie.metiers-graphiques.fr">http://kitdesurvie.metiers-graphiques.fr</a></li>
+                <li><a href="http://www.profession-graphiste-independant.com/">http://www.profession-graphiste-independant.com</a></li>
+              </ul>
+              <p>
+                <img src="img/session1/book-cover.jpg" width="48%" />
+                <img src="img/session1/book-back.jpg" width="48%" style="margin-left: 3%" />
+              </p>
+            </div>
+          </section>
+          <section>
+            <h1>Différents types de structure</h1>
+            <div style="text-align: left;">
+              <ul>
+                <li><abbr title="Entreprise individuelle">EI</abbr> (Ex: Affilié à la Maison des artistes, Auto entrepreneur, Indépendant)</li>
+                <li><abbr title="Entreprise unipersonnelle à résponsabilité limitée">EURL</abbr>, <abbr title="Entreprise individuelle à résponsabilité limitée">EIRL</abbr></li>
+                <li><abbr titme="Société à responsabilité limitée">SARL</abbr>, <abbr title="Société par actions simplifiée">SAS</abbr>, <abbr title="Société par actions simplifiée unipersonnelle">SASU</abbr>...</li>
+              </ul>
+              <p>Pour une liste complète, voir :</p>
+              <ul>
+                <li><a href="http://vosdroits.service-public.fr/professionnels-entreprises/F23844.xhtml">http://vosdroits.service-public.fr/</a></li>
+                <li><a href="https://fr.wikipedia.org/wiki/Soci%C3%A9t%C3%A9_en_droit_fran%C3%A7ais#Soci.C3.A9t.C3.A9s_commerciales">Wikipédia</a></li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Choix du type de structure</h1>
+            <div style="text-align: left;">
+              <p>Il est impératif de bien choisir son type de structure, en fonction :</p>
+              <ul>
+                <li>du CA attendu (il y a des limites sur certains statuts : AE)</li>
+                <li>du type de préstation (BNC, BIC)</li>
+                <li>du cadre juridique (patrimoine personnel, associés ou non...)</li>
+              </ul>
+              <p>Pour cela il faut essayer de comprendre les différences même s'il est parfois difficile de trouver des informations fiables de l'état.</p>
+              <p><span class="fa fa-warning"></span>&nbsp;La création de certaines structure demande des démarches complexes et a un coût</p>
+            </div>
+          </section>
+          <section>
+            <h1>Se rapprocher des bonnes personnes</h1>
+            <div style="text-align: left;">
+              <p>Des organismes sont là pour vous guider dans la démarche de création</p>
+              <ul>
+                <li>Chambre de Commerce et d'Industrie (CCI)</li>
+                <li>Experts comptables</li>
+                <li>Votre entourage ?</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Changement de statut</h1>
+            <div style="text-align: left;">
+              <p>Il est toujours possible de changer de statut une fois l'entreprise en place.</p>
+              <ul>
+                <li>Si le CA augmente</li>
+                <li>Si le cadre juridique doit évoluer</li>
+                <li>Si des associés sont intégrés</li>
+                <li>Parfois même il change automatiquement...</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>La sécurité sociale</h1>
+            <div style="text-align: left;">
+              <p>Un entrepreneur individuel n'est pas affilié à la "CPAM" comme un salarié. Il doit choisir un organisme spécifique pour sa sécurité sociale.</p>
+              <ul>
+                <li>RSI : Régime social des indépendants</li>
+                <li>Une très mauvaise couverture en cas d'accident de travail</li>
+              </ul>
+              <p><span class="fa fa-warning"></span>&nbsp;Exception pour les affiliés à la MDA qui sont rattachés à la CPAM...</p>
+            </div>
+          </section>
+          <section>
+            <h1>Les charges sociales</h1>
+            <div style="text-align: left;">
+              <p>Dès la première facture faite, des charges sociales sont appliquées...</p>
+              <ul>
+                <li>Par la caisse sociale (URSSAF, MDA)</li>
+                <li>Par la caisse santé (RSI)</li>
+                <li>Par la caisse retraite (CIPAV)</li>
+              </ul>
+              <p><span class="fa fa-warning"></span>&nbsp;Des modalités de calculs complexes avec des plafonds mais au final, entre 35% et 40% tout confondu</p>
+              <p><span class="fa fa-warning"></span>&nbsp;Pour les régimes micro (MDA, AE) les charges sont plus légères.</p>
+            </div>
+          </section>
+          <section>
+            <h1>La TVA</h1>
+            <div style="text-align: left;">
+              <p>La TVA (Taxe sur la Valeur Ajoutée) est une taxe intégrée dans les factures des entreprises qui est payée uniquement par le consommateur final. Toutes les entreprises ne sont pas assujettis à la TVA (micro BNC).</p>
+              <ul>
+                <li>La TVA est vendue sur les prestations au taux actuel: 20%</li>
+                <li>La TVA est achetée sur les produits consommés</li>
+                <li>Bilan: rembourser/récupèrer le delta acheté/vendu à l'état</li>
+              </ul>
+              <p><span class="fa fa-warning"></span>&nbsp;Cette taxe permet aux entreprises d'acheter les consommables et services hors taxe</p>
+            </div>
+          </section>
+          <section>
+            <h1>Des questions ?</h1>
+            <div>
+              <p>Combien d'entres vous seraient intéressés pour aller plus loin ?</p>
+            </div>
+          </section>
+        </section>
+<!--2-------------------------------------------------------------------------->
+        <section class="stack">
+          <section>
+            <h1>2. Se vendre</h1>
+          </section>
+          <section>
+            <h1>Un positionnement à trouver</h1>
+            <div>
+              <ul>
+                <li>Quel genre de prestations ?</li>
+                <li>Quelles expertises ?</li>
+                <li>Etudier le marché</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Le réseau, un élément vital</h1>
+            <div style="text-align: left;">
+              <p>C'est l'élément le plus structurant dans les choix des clients. Il faut cultiver son image et rester professionnel.</p>
+              <ul>
+                <li>Qualité de service, tenu des délais, gestion des conflits...</li>
+                <li>Comment j'apparais sur le web ?</li>
+                <li>Bloguer ?</li>
+                <li>Si tout se passe bien on parlera de vous !</li>
+              </ul>
+              <p><span class="fa fa-warning"></span>&nbsp;Aujourd'hui il est aussi facile de se construire une réputation que de la détruire.</p>
+            </div>
+          </section>
+          <section>
+            <h1>Le tarif</h1>
+            <div style="text-align: left;">
+              <p>Le tarif est un élément important dans le positionnement, il doit être juste et cohérent.</p>
+              <ul>
+                <li>Ne pas tomber dans le piège de l'adapter à la tête du client</li>
+                <li>Il est réfléchit par rapport au coût de fonctionnement de la "structure"</li>
+                <li>Il est basé sur le temps moyen à passer sur un projet et sur le type de projet / compétence</li>
+              </ul>
+              <p><span class="fa fa-warning"></span>&nbsp;Il peut être modulé en fonction de prestation en régie ou au forfait ou encore sur des engagement clients très important.</p>
+            </div>
+          </section>
+          <section>
+            <h1>Le cadrage projet</h1>
+            <div style="text-align: left;">
+              <p>Pour tout nouveau projet, il est important de définir le cadre de manière précise afin d'anticiper au maximum les différents besoins.</p>
+              <ul>
+                <li>Il faut rechercher / discuter avec le client pour connaître ses vrais besoins</li>
+                <li>Il faut étudier les éléments complexes pour trouver des solutions efficaces</li>
+              </ul>
+              <p>L'objectif est de faire une proposition chiffrée viable pour les deux parties prestataire et client.</p>
+            </div>
+          </section>
+          <section>
+            <h1>Les livrables</h1>
+            <div style="text-align: left;">
+              <p>Les livrables doivent être définis dès le moment du cadrage car ils sont structurant pour la proposition et correspondent au résultat final de la prestation :</p>
+              <ul>
+                <li>Un site configuré et visible en ligne accompagné d'un manuel utilisateur</li>
+                <li>Une maquette graphique déclinée en 5 thèmes différents</li>
+                <li>Des bannières animées en 18 formats et traduits en 5 langues dans un fichier ZIP</li>
+              </ul>
+              <p><span class="fa fa-warning"></span>&nbsp;Des incompréhensions dans leur définition peuvent générer une grosses quantité de travail supplémentaire</p>
+            </div>
+          </section>
+          <section>
+            <h1>L'engagement</h1>
+            <div style="text-align: left;">
+              <p>Une fois une prestation définie, chiffrée, devisée et validée il est "impossible" de revenir dessus.</p>
+              <ul>
+                <li>Tenir ces engagements est un symbole de fiabilité important</li>
+                <li>Il est difficile de renégocier si on a "oublié" d'intégrer du travail dans le chiffrage</li>
+              </ul>
+            </div>
+          </section>
+        </section>
+<!--3-------------------------------------------------------------------------->
+        <section class="stack">
+          <section>
+            <h1>3. Un cas projet concret</h1>
+          </section>
+          <section>
+            <h1>Réponse à un appel d'offre</h1>
+            <div style="text-align: left;">
+              <p>Que ce soit un appel d'offre public, privée ou juste une prestation pour un client régulier, il est important de structurer la réponse à un projet.</p>
+              <ul>
+                <li>Créer un document qui présente l'équipe, ses méthodes et ses compétences</li>
+                <li>Comprendre les besoins et proposer une solution adaptée</li>
+                <li>Estimer le temps à passer sur le projet</li>
+                <li>Cadrer et proposer un budget</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Un exemple: Chartreuse Tourisme</h1>
+            <div style="text-align: left;">
+              <p>Une stratégie éditoriale basée sur la mise en avant du territoire: Sitra, Communauté, Cartographie, Randonnée...</p>
+              <img src="img/session1/chartreuse.jpg" />
+            </div>
+          </section>
+          <section>
+            <h1>À vous !<br/><small><a href="http://www.vivreaveclaterre.com/">http://www.vivreaveclaterre.com</a></small></h1>
+            <div style="text-align: left;">
+              <p><u>Objectif:</u> Travailler sur les différents concepts de gestion (cadrage, estimation, budget, devis/facturation) en utilisant comme base le projet de refonte de ce site.</p>
+              <p><u>Contexte:</u> Ce site présente la société "Vivre avec la Terre" qui propose des stages et conférences dans tout ce qui est équilibrage énergétique de l'habitat et de l'humain.<br/>Ils tiennent beaucoup à la gamme couleur utilisée aujourd'hui ainsi qu'à l'image des papillons/enfants pour réprésenter leur travail.</p>
+            </div>
+          </section>
+          <section>
+            <h1>L'idée !</h1>
+            <div style="text-align: left;">
+              <p>Vous devez par groupe de 2/3 personnes réaliser une proposition commerciale pour la refonte de ce site web.</p>
+              <ul>
+                <li>Présentation de l'équipe, des compétences et références ainsi que des moyens mis à disposition pour le projet</li>
+                <li>Réalisation d'une proposition claire sur les changements à apporter au site tant au niveau graphique qu'au niveau de la structure (proposition d'une arborescence, benchmark graphique...)</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>L'idée ! (suite)</h1>
+            <div style="text-align: left;">
+              <ul>
+                <li>Réalisation de mockup d'interface pour illustrer ce que vous proposez</li>
+                <li>Estimation du temps de travail par profil nécessaire à la réalisation de ce projet</li>
+                <li>Cadrage budgétaire</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>C'est parti <span class="fa fa-smile-o"/></h1>
+          </section>
+        </section>
+<!--#########################################################################-->
+        <section data-background-color="rgba( 0, 174, 239, 0.6 )">
+          <h1>Merci pour votre attention</h1>
+        </section>
+      </div>
+
+    </div>
+
+    <script src="../../../reveal.js/lib/js/head.min.js"></script>
+    <script src="../../../reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: false,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: '../../../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../../../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../../../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '../../../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '../../../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+  </body>
+</html>
