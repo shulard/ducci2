@@ -533,12 +533,9 @@
           <section>
             <h1>Où les trouver</h1>
             <div style="text-align: left;">
-              <p>Comme pour les thèmes, il est possible d'en installer directement depuis Wordpress. Ils sont principalement référencés sur Wordpress.org.</p>
-              <ul>
-                <li><a href="https://wordpress.org/plugins/">https://wordpress.org/plugins/</a></li>
-                <li><a href="http://wpchannel.com/category/ressources/plugins-wordpress/">http://wpchannel.com/category/ressources/plugins-wordpress/</a></li>
-              </ul>
-              <p>Il existe énormément de plugins gratuit qui sont de qualité très variable...</p>
+              <p>Comme pour les thèmes, il est possible d'en installer directement depuis Wordpress. Ils sont principalement référencés sur <a target="_blank" href="https://wordpress.org/plugins/">Wordpress.org</a>.</p>
+              <p>Certains sites références aussi des plugins comme <a target="_blank" href="http://wpchannel.com/category/ressources/plugins-wordpress/">WP Channel</a></p>
+              <p>Il existe énormément de plugins gratuit qui sont de qualité très variable...<br/>Il y a aussi des plugins "premiums" payant comme <a target="_blank" href="http://wp-rocket.me/fr/">WP Rocket</a>, ACF, ...</p>
             </div>
           </section>
           <section>
@@ -555,7 +552,11 @@
                   <li>Exemple askimet/askimet.php</li>
                 </ul>
               </ul>
-              <p>Ils sont toujours placé dans <code>wp-content/plugins</code></p>
+              <p>Ils sont toujours placés dans :</p>
+              <ul>
+                <li><code>wp-content/plugins</code> pour les plugins "standards"</li>
+                <li><code>wp-content/mu-plugins</code> pour les "<a href="https://codex.wordpress.org/Must_Use_Plugins">must use</a>" plugins</li>
+              </ul>
             </div>
           </section>
           <section>
@@ -564,14 +565,14 @@
               <p>Comme pour le thème, la définition du plugin est réalisé grâce à des commentaires...</p>
               <pre>
                 <code class="php">
-                  /*
-                  Plugin Name: Hello Dolly
-                  Plugin URI: http://wordpress.org/plugins/hello-dolly/
-                  Description: This is not just a plugin, it symbolizes the hope and enthusiasm of an entire generation summed up in two words sung most famously by Louis Armstrong: Hello, Dolly. When activated you will randomly see a lyric from <cite>Hello, Dolly</cite> in the upper right of your admin screen on every page.
-                  Author: Matt Mullenweg
-                  Version: 1.6
-                  Author URI: http://ma.tt/
-                  */
+  /*
+  Plugin Name: Hello Dolly
+  Plugin URI: http://wordpress.org/plugins/hello-dolly/
+  Description: This is not just a plugin, it symbolizes the hope and enthusiasm of an entire generation summed up in two words sung most famously by Louis Armstrong: Hello, Dolly. When activated you will randomly see a lyric from <cite>Hello, Dolly</cite> in the upper right of your admin screen on every page.
+  Author: Matt Mullenweg
+  Version: 1.6
+  Author URI: http://ma.tt/
+  */
                 </code>
               </pre>
               <p>Ensuite, dans ce fichier toutes les actions nécessaire au fonctionnement du plugin sont effectuées.</p>
@@ -586,16 +587,15 @@
                 <ul>
                   <li>Pour bloquer le spam sur les formulaires de commentaire</li>
                 </ul>
-                <li><a href="http://www.advancedcustomfields.com/">Advanced Custom Fields</a></li>
+                <li><a href="http://www.advancedcustomfields.com/">Advanced Custom Fields</a> (payant)</li>
                 <ul>
                   <li>Pour créer des interfaces de saisies personnalisées</li>
                 </ul>
-                <li><a href="https://yoast.com/wordpress/plugins/seo/">SEO Wordpress</a></li>
+                <li><a href="http://wp-rocket.me/fr/">WP Rocket</a> (payant)</li>
                 <ul>
-                  <li>Pour fiabilier le SEO et améliorer la pertinence des contenus</li>
+                  <li>Un plugin de cache très performant (contenu, assets...)</li>
                 </ul>
-                <li><a href="https://wordpress.org/plugins/contact-form-7/">Contact Form 7</a></li>
-                <li><a href="http://gndev.info/shortcodes-ultimate/">Shortcodes Ultimate</a></li>
+                <li><a href="https://wordpress.org/plugins/contact-form-7/">Contact Form 7</a>, <a href="http://www.gravityforms.com/">Gravity Forms</a> (payant), <a href="http://gndev.info/shortcodes-ultimate/">Shortcodes Ultimate</a>...</li>
               </ul>
             </div>
           </section>
@@ -621,6 +621,18 @@
             <h1>Utiliser</h1>
             <div style="text-align:left;">
               <p>C'est en l'utilisant que vous découvrirez toutes les possibilités de l'outil. Il faut le bidouiller, le mettre à mal, et finalement exploiter au maximum ses fonctionnalités!</p>
+            </div>
+          </section>
+          <section>
+            <h1>Contribuer</h1>
+            <div style="text-align:left;">
+              <p>WordPress est un projet Open Source avec une importante communauté. Il est possible de participer de pleins de façons différentes :</p>
+              <ul>
+                <li>En traduisant interface, les thèmes, les plugins</li>
+                <li>En participant au développement du coeur</li>
+                <li>En participant à des évenements (<a href="https://lyon.wordcamp.org/">WordCamp Lyon</a>)</li>
+                <li>...</li>
+              </ul>
             </div>
           </section>
         </section>
