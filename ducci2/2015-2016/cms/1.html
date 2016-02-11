@@ -315,7 +315,7 @@
                     <div>
                       <ul>
                         <li>C'est un ensemble de fichier permettant d'afficher les contenus à l'utilisateur</li>
-                        <li>Les thèmes Wordpress respectent des règles adaptées à chaque type de contenu</li>
+                        <li>Les thèmes Wordpress respectent des règles simples :</li>
                         <ul>
                           <li>Ils sont écrits en PHP</li>
                           <li>Le fichier style.css définit ce qu'est le thème</li>
@@ -358,7 +358,9 @@
                     </div>
                   </section>
                   <section>
-                    <img src="img/session2/template-hierarchy.jpg" style="max-width:125%; max-height:125%; margin-left: -12.5%; margin-top: -5%" />
+                    <a href="https://developer.wordpress.org/themes/basics/template-hierarchy/">
+                      <img src="https://developer.wordpress.org/files/2014/10/template-hierarchy.png" style="max-width:125%; max-height:125%; margin-left: -12.5%; margin-top: -5%" />
+                    </a>
                   </section>
                   <section>
                     <h1>Le configurateur</h1>
@@ -366,8 +368,8 @@
                       <ul>
                         <li>Si vous sélectionnez "Apparence > Personnaliser" dans l'administration, vous ouvrez le configurateur</li>
                         <li>Il permet de modifier rapidement l'apparence du thème en cours</li>
-                        <li>Cette interface affiche un aperçu des modifications en direct</li>
-                        <li>Les possibilités de cet écran son définies dans le thème directement</li>
+                        <li>Cette interface affiche en direct un aperçu des modifications</li>
+                        <li>Les possibilités de cet écran sont définies dans le thème directement</li>
                       </ul>
                       <img src="img/session2/wordpress-configurateur.png" />
                     </div>
@@ -401,7 +403,7 @@
                       <ul>
                         <li>Pas besoin d'être un "<strong>Wordpress Guru</strong>" pour personnaliser un thème</li>
                         <li>On peut partir d'un thème bien construit et qui répond déjà à nos principaux besoins</li>
-                        <li>On isole les modifications apportés pour pouvoir gérer les mises à jour du parent</li>
+                        <li>On isole les modifications apportées pour pouvoir gérer les mises à jour du parent</li>
                         <li>Complétement adapté aux petites modifications sur un thème choisit</li>
                       </ul>
                     </div>
@@ -409,7 +411,7 @@
                   <section>
                     <h1>Créer son propre thème</h1>
                     <div style="text-align:left;">
-                      <p>Parfois, il faut sortir des utilisations standards et des thèmes existants.</p>
+                      <p>Parfois, il faut sortir du cadre offert par un thème existant :</p>
                       <ul>
                         <li>Intégrer un design très spécifique peut nécessiter de créer un thème</li>
                         <li>Créer avec plus de liberté et apporter des fonctionnalités spécifiques</li>
@@ -422,8 +424,8 @@
                     <div style="text-align:left;">
                       <p>Un thème est au minimum composé de 3 choses :</p>
                       <ul>
-                        <li>Un fichier style.css le décrivant</li>
-                        <li>Un fichier index.php pour afficher les contenus</li>
+                        <li>Un fichier <code>style.css</code> le décrivant</li>
+                        <li>Un fichier <code>index.php</code> pour afficher les contenus</li>
                         <li>Un répertoire contenant ces deux fichiers et placé dans <code>wp-content/themes/[mon-theme]</code></li>
                         <li>Le thème est identifé par le nom du répertoire qui le contient</li>
                       </ul>
@@ -442,7 +444,7 @@
                       </pre>
                       <ul>
                         <li><code>Theme Name:</code> pour un nom "User Friendly" du thème</li>
-                        <li>Et d'autres instructions pour présenter le thème <code>Author:</code>, <code>Version:</code>, <code>Author:</code>, <code>Licence:</code>...</li>
+                        <li>Et d'autres instructions pour présenter le thème <code>Author:</code>, <code>Version:</code>, <code>Author:</code>, <code>Licence:</code>, ...</li>
                       </ul>
                     </div>
                   </section>
@@ -455,17 +457,18 @@
   the_title();
                         </code>
                       </pre>
-                      <p>Une instruction simple pour afficher le titre du post en cours. Ce fichier contient toute la logique d'affichage générale.</p>
+                      <p>Template par défaut, ce fichier contient toute la logique d'affichage générale.</p>
+                      <p>Il n'est pas obligatoire de le créer mais c'est conseillé !</p>
                     </div>
                   </section>
                   <section>
                     <h1><code>functions.php</code></h1>
                     <div style="text-align:left;">
-                      <p>Élément important des thèmes, ce fichier permet de définir le comportement technique du thème.</p>
+                      <p>Ce fichier permet de définir le comportement technique du thème.</p>
                       <p>Il contient l'intialisation et la personnalisation de Wordpress :</p>
                       <ul>
                         <li>Styles spécifiques dans l'éditeur WYSIWYG</li>
-                        <li>Formats d'images personnalisés</li>
+                        <li>Formats d'images personnalisées</li>
                         <li>Enregistrement des types de contenus et des taxonomies</li>
                         <li>Personnalisation de l'interface d'administration</li>
                         <li>...</li>
@@ -515,7 +518,6 @@
                     <div style="text-align:left;">
                       <p>La documentation autour de la création de thèmes est très riche et partiellement traduite en français.</p>
                       <p>L'étude des thèmes existants est un bon point de départ pour découvir les différentes possibilités cachées...</p>
-                      <p>Il ne reste plus qu'à y aller!</p>
                     </div>
                   </section>
                 </section>
