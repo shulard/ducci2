@@ -69,6 +69,7 @@
               <li><code>actions</code> et <code>filters</code></li>
               <li>Gestion des médias</li>
               <li>Gestion des traductions</li>
+              <li>WP-CLI à la rescousse</li>
             </ol>
           </div>
         </section>
@@ -255,6 +256,29 @@
               </code></pre>
             </div>
           </section>
+          <section>
+            <h1>Quelques-uns vraiment utiles</h1>
+            <div style="text-align: left;">
+              <p>Pour les <a href="https://codex.wordpress.org/Plugin_API/Action_Reference"><code>actions</code></a> :</p>
+              <ul>
+                <li><code><a href="https://codex.wordpress.org/Plugin_API/Action_Reference/after_setup_theme">after_setup_theme</a></code> : Généralement utilisé pour initialiser les paramètre et options du thème</li>
+                <li><code><a href="https://codex.wordpress.org/Plugin_API/Action_Reference/plugins_loaded">plugins_loaded</a></code> : Généralement utilisé pour initialiser les paramètre et options d'un plugin</li>
+                <li><code><a href="https://codex.wordpress.org/Plugin_API/Action_Reference/template_redirect">template_redirect</a></code> : Permet d'intervenir au moment du choix du template</li>
+                <li><code><a href="https://codex.wordpress.org/Plugin_API/Action_Reference/wp_enqueue_scripts">wp_enqueue_scripts</a></code> : Pour charger tous les styles et scripts sur le front</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Quelques-uns vraiment utiles</h1>
+            <div style="text-align: left;">
+              <p>Pour les <a href="https://codex.wordpress.org/Plugin_API/Filter_Reference"><code>filters</code></a> :</p>
+              <ul>
+                <li><code><a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/previous_posts_link_attributes">previous_posts_link_attributes</a></code>, <code><a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/next_posts_link_attributes">next_posts_link_attributes</a></code>, <code><a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/previous_comments_link_attributes">previous_comments_link_attributes</a></code>, <code><a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/next_comments_link_attributes">next_comments_link_attributes</a></code></li>
+                <li><code><a href="https://codex.wordpress.org/Plugin_API/Action_Reference/tiny_mce_before_init">tiny_mce_before_init</a></code> : Pour adapter TinyMCE</li>
+                <li><code><a href="https://codex.wordpress.org/Plugin_API/Action_Reference/image_size_names_choose">image_size_names_choose</a></code> : Pour définir les formats d'images autorisés dans le contenu</li>
+              </ul>
+            </div>
+          </section>
         </section>
 <!--4-------------------------------------------------------------------------->
         <section class="stack">
@@ -290,6 +314,24 @@
               </code></pre>
             </div>
           </section>
+          <section>
+            <h1>Images à la une</h1>
+            <div style="text-align: left;">
+              <p>Une fonctionalité cachée à activer dans votre <code>functions.php</code>. Elle permet d'associer une image à un article.</p>
+              <p>On ajoute dans le fichier <code>functions.php</code>:</p>
+              <pre><code class="php">
+  //Activation du "post-thumbnails"
+  add_theme_support( 'post-thumbnails' );
+              </code></pre>
+              <p>Et on utilise ensuite:</p>
+              <pre><code class="php">
+  //Format 136x126 avec crop
+  if( has_post_thumbnail() ) {
+    the_post_thumbnail('full', $attrs);
+  }
+              </code></pre>
+            </div>
+          </section>
         </section>
 <!--5-------------------------------------------------------------------------->
         <section class="stack">
@@ -299,7 +341,7 @@
           <section>
             <h1>Gettext comme format de fichier</h1>
             <div style="text-align: left;">
-              <p>Wordpress utilise un sytème de traduction pour tous les libellés d'interface.<br/>C'est ce système qui permet de voir l'interface d'administration en différente langue.</p>
+              <p>Wordpress utilise un sytème de traduction pour tous les libellés d'interface.<br/>C'est ce système qui permet de voir l'interface d'administration ou le site en différente langue.</p>
               <p>Les fichiers de langue sont au format <code>gettext</code>. J'utilise le logiciel "<a href="https://poeditor.com/">Poedit</a>" pour les manipuler.</p>
               <p>La documentation est assez complète sur cette partie: <a href="http://codex.wordpress.org/Translating_WordPress">Codex</a>, <a href="https://make.wordpress.org/polyglots/handbook/translating/basics/">Wordpress community</a></p>
             </div>
@@ -315,20 +357,119 @@
               <pre><code class="php">
   load_textdomain( 'domain', dirname(__FILE__) . '/lang/fr.mo' );
               </code></pre>
+              <p>La locale n'est pas dynamique en fonction du pays de l'utilisateur. Il s'agit de la langue d'installation du CMS.</p>
             </div>
           </section>
           <section>
-            <h1>Utiliser les fonctions de traductions</h1>
-            <div style="text-align: left;">
-              <p>__(), _e(), _n(), placeholder avec sprintf, _x(), _ex()</p>
-              <p>https://developer.wordpress.org/themes/functionality/internationalization/</p>
-            </div>
+            <h1>Utiliser les fonctions natives</h1>
+            <div style="text-align: left; width: 110%; margin-left: -5%">
+            <ul>
+              <li><code>__('libelle', 'domain')</code></li>
+              <ul>
+                <li>pour traduire le 'libelle' en utilisant le domaine 'domain'</li>
+              </ul>
+              <li><code>_e('libelle', 'domain')</code> = <code>echo __(...)</code></li>
+              <li><code>_n('singulier', 'pluriel', $number, 'domain')</code></li>
+              <li><code>_x('libelle', 'context' 'domain')</code></li>
+              <li><code>_ex('libelle', 'context', 'domain')</code> = <code>echo _x(...)</code></li>
+              <li><code>_nx('singuler', 'pluriel', 'context', 'domain')</code></li>
+            </ul>
+            <p>Pour plus de détail voir la <a href="https://developer.wordpress.org/themes/functionality/internationalization/">documentation complète</a>.</p>
           </section>
         </section>
 <!--6-------------------------------------------------------------------------->
         <section class="stack">
           <section>
-            <h1>6. Sécurité</h1>
+            <h1>6. WP-CLI à la rescousse</h1>
+          </section>
+          <section>
+            <h1>Pourquoi ?</h1>
+            <p><code>wp-cli</code> est un outil en ligne de commande pour intéragir avec WordPress. Il facilite la gestion et la maintenance du site.</p>
+            <pre><code>
+  curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+  mv wp-cli.phar wp
+  chmod +x wp
+            </code></pre>
+          </section>
+          <section>
+            <h1>Pour générer du code</h1>
+            <div style="width: 140%; margin-left: -20%">
+              <ul>
+                <li>Pour un type personnalisé:</li>
+                <ul>
+                  <li><code>wp scaffold post-type mon-type</code></li>
+                </ul>
+                <li>Pour un thème enfant:</li>
+                <ul>
+                  <li><code>wp scaffold child-theme mon-theme --parent_theme=twentysixteen</code></li>
+                </ul>
+                <li>Pour un plugin:</li>
+                <ul>
+                  <li><code>wp scaffold plugin mon-plugin</code></li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Pour les médias</h1>
+            <div>
+              <ul>
+                <li>Regénérer toutes les miniatures:</li>
+                <ul>
+                  <li><code>wp medias regenerate --yes</code></li>
+                </ul>
+                <li>Regénérer pour un media (ici id=10):</li>
+                <ul>
+                  <li><code>wp medias regenerate 10 --yes</code></li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Pour la BDD</h1>
+            <div>
+              <ul>
+                <li>Sauvegarder:</li>
+                <ul>
+                  <li><code>wp db export file.sql</code></li>
+                </ul>
+                <li>Restaurer:</li>
+                <ul>
+                  <li><code>wp db import file.sql</code></li>
+                </ul>
+                <li>Requêter:</li>
+                <ul>
+                  <li><code>wp db query "SELECT COUNT(*) FORM wp_posts"</code></li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Pour le coeur de WP</h1>
+            <div>
+              <ul>
+                <li>Installer:</li>
+                <ul>
+                  <li><code>wp core install</code></li>
+                </ul>
+                <li>Mettre à jour:</li>
+                <ul>
+                  <li><code>wp core update</code></li>
+                </ul>
+                <li>Autres manips:</li>
+                <ul>
+                  <li><code>wp core check-update</code></li>
+                  <li><code>wp core is-installed</code></li>
+                  <li><code>wp core language</code></li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+        </section>
+<!--7-------------------------------------------------------------------------->
+        <section class="stack">
+          <section>
+            <h1>7. Sécurité</h1>
           </section>
           <section>
             <h1>Affichage</h1>
@@ -336,15 +477,6 @@
               <p>Utiliser les fonctions natives ou d'espace</p>
               <p>Jeter un oeil à secupress</p>
             </div>
-          </section>
-        </section>
-<!--7-------------------------------------------------------------------------->
-        <section class="stack">
-          <section>
-            <h1>7. Sidebar</h1>
-          </section>
-          <section>
-            <h1>Comment et pourquoi</h1>
           </section>
         </section>
 <!--#########################################################################-->
