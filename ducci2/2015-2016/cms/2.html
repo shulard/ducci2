@@ -123,7 +123,7 @@
             <div style="text-align: left;">
               <ul>
                 <li>Les assets sont les fichiers JavaScript et CSS qui sont utilisés dans votre thème.</li>
-                <li>Ils sont généralement stockées dans le répertoire du thème</li>
+                <li>Ils sont généralement stockés dans le répertoire du thème</li>
                 <li>Ces fichiers ont un impact direct sur le ressenti des utilisateurs sur les performances du site</li>
                 <ul>
                   <li>Optimisation, compression et performances</li>
@@ -140,6 +140,12 @@
               <p>
                 Selon le site qui utilise le thème, l'URL vers ces fichiers peut être différente. Wordpress propose des outils pour toujours disposer de la bonne URL.
               </p>
+            </div>
+          </section>
+          <section>
+            <h1>Attention à l'emplacement d'appel</h1>
+            <div style="text-align: left;">
+              <p>Tout le code présent dans <code>functions.php</code> est exécuté dans le front-end et le back-end. Il faut utiliser les <code>actions</code> et <code>filters</code> pour s'assurer que les CSS et JS ne soient pas chargés au mauvais endroit !</p>
             </div>
           </section>
           <section>
