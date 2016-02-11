@@ -478,14 +478,36 @@
             <h1>7. Sécurité</h1>
           </section>
           <section>
-            <h1>Affichage</h1>
+            <h1>Affichage en front</h1>
             <div style="text-align: left;">
-              <p>Utiliser les fonctions natives ou d'espace</p>
-              <p>Jeter un oeil à secupress</p>
+              <p>Il ne faut jamais afficher en front une donnée saisie par l'utilisateur.</p>
+              <p>Les fonctions natives utilisent par défaut le mécanisme d'échappement.</p>
+              <pre><code class="php">
+  the_title();
+  esc_js(...);
+  esc_html(...);
+  esc_attr(...);
+  esc_textarea(...);
+  esc_url(...);
+              </code></pre>
+            </div>
+          </section>
+          <section>
+            <h1>Enregistrement en BDD</h1>
+            <div style="text-align: left;">
+              <p>Il ne faut jamais enregistrer en BDD une donnée non "escapée".</p>
+              <p>Il ne faut jamais intégrer dans une requête SQL des données utilisateur non "escapée".</p>
+              <pre><code class="php">
+  mysql_real_escape_string(...);
+  esc_like(...);
+  esc_sql(...);
+              </code></pre>
             </div>
           </section>
         </section>
 <!--#########################################################################-->
+        <section data-background-color="rgba( 0, 174, 239, 0.6 )">
+        </section>
       </div>
 
     </div>
