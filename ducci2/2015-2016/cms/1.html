@@ -565,7 +565,19 @@
                           <li>Exemple askimet/askimet.php</li>
                         </ul>
                       </ul>
-                      <p>Ils sont toujours placé dans <code>wp-content/plugins</code></p>
+                      <p>Ils sont toujours placés dans :</p>
+                      <ul>
+                        <li><code>wp-content/plugins</code> pour les plugins "standards"</li>
+                        <li><code>wp-content/mu-plugins</code> pour les "<a href="https://codex.wordpress.org/Must_Use_Plugins">must use</a>" plugins</li>
+                      </ul>
+                    </div>
+                  </section>
+                  <section>
+                    <h1>Les plugins <a href="https://codex.wordpress.org/Must_Use_Plugins">Must Use</a></h1>
+                    <div style="text-align: left;">
+                      <p>Ce sont des plugins installés dans un répertoire spécial <code>wp-content/mu-plugins</code> et qui sont activés automatiquement sur tous les sites de l'installation.</p>
+                      <p>Ils ne sont pas affichés dans la liste par défaut de la page "Plugins" de l'administration. Ils apparaissent quand même dans une partie "must use"</p>
+                      <p>Les mises à jour de ces plugins ne sont pas incluent dans les notifications, c'est le webmaster qui est responsable de leur mise à jour (à faire à la main).</p>
                     </div>
                   </section>
                   <section>
@@ -591,12 +603,12 @@
                     <h1>Quelques-uns vraiment utiles</h1>
                     <div style="text-align: left;">
                       <p>Il est parfois difficile de trouver le bon plugin, voici une liste de plugins validés et solides</p>
-                      <ul>
+                      <ul style="font-size: 0.7em;">
                         <li><a href="http://akismet.com/">Askimet</a></li>
                         <ul>
                           <li>Pour bloquer le spam sur les formulaires de commentaire</li>
                         </ul>
-                        <li><a href="http://www.advancedcustomfields.com/">Advanced Custom Fields</a></li>
+                        <li><a href="http://www.advancedcustomfields.com/">Advanced Custom Fields (payant)</a></li>
                         <ul>
                           <li>Pour créer des interfaces de saisies personnalisées</li>
                         </ul>
@@ -604,7 +616,11 @@
                         <ul>
                           <li>Pour fiabilier le SEO et améliorer la pertinence des contenus</li>
                         </ul>
-                        <li><a href="https://ninjaforms.com/">Ninja Forms</a></li>
+                        <li><a href="http://wp-rocket.me/fr/">WP Rocket</a> (payant)</li>
+                        <ul>
+                          <li>Un plugin de cache très performant (contenu, assets...)</li>
+                        </ul>
+                        <li><a href="https://ninjaforms.com/">Ninja Forms (payant)</a></li>
                         <li><a href="http://gndev.info/shortcodes-ultimate/">Shortcodes Ultimate</a></li>
                       </ul>
                     </div>
