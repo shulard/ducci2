@@ -64,19 +64,21 @@
           <h1>Pendant ce cours...</h1>
           <div>
             <ol>
-              <li>Comment structurer le thème</li>
+              <li>Comment&nbsp;structurer&nbsp;un&nbsp;thème</li>
               <li>Gestion des assets (JS, CSS)</li>
               <li><code>actions</code> et <code>filters</code></li>
               <li>Gestion des médias</li>
               <li>Gestion des traductions</li>
               <li>WP-CLI à la rescousse</li>
+              <li>Sécurité</li>
+              <li>Concepts avancés</li>
             </ol>
           </div>
         </section>
 <!--1-------------------------------------------------------------------------->
         <section class="stack">
           <section>
-            <h1>1. Comment structurer le thème</h1>
+            <h1>1. Comment structurer un thème</h1>
           </section>
           <section>
             <h1>Comprendre les gabarits</h1>
@@ -502,6 +504,166 @@
   esc_like(...);
   esc_sql(...);
               </code></pre>
+            </div>
+          </section>
+        </section>
+<!--8-------------------------------------------------------------------------->
+        <section class="stack">
+          <section>
+            <h1>8. Concepts avancés</h1>
+          </section>
+          <section>
+            <h1><code>WP_Query</code> </h1>
+          </section>
+          <section>
+            <h1>Requête sur les données</h1>
+            <div style="text-align: left;">
+              <p><code>WP_Query</code> est l'objet qui encapsule la logique de requête sur les données.</p>
+              <ul>
+                <li>Il permet d'initialiser <a href="./session2.html#/5/16">la boucle</a></li>
+                <li>Il est au coeur de la récupération et l'affichage de toutes les informations</li>
+                <li>La <a href="http://codex.wordpress.org/Class_Reference/WP_Query">documentation Codex</a> est complète à son sujet</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Exemple général</h1>
+            <div style="text-align: left;">
+              <pre><code class="php">
+  $query = new WP_Query( $args );
+  // The Loop
+  if ( $query->have_posts() ) {
+    while ( $query->have_posts() ) {
+      $query->the_post();
+      the_title(); //Affichage du titre
+    }
+  } else {
+    // no posts found
+  }
+  /* Restore original Post Data */
+  wp_reset_postdata();
+              </code></pre>
+              <p>ATTENTION: L'utilisation de <a href="http://codex.wordpress.org/Function_Reference/wp_reset_postdata"><code>wp_reset_postdata</code></a> est très importante, sinon le contexte d'exécution générale devient instable</p>
+            </div>
+          </section>
+          <section>
+            <h1>Le contexte d'exécution</h1>
+            <div style="text-align: left;">
+              <p>Grâce à <a href="./session2.html#/5/16">la boucle</a>, le contexte d'éxecution courant est complétement surchargé. Toutes les méthodes d'accès générique aux données sont "branchées" sur le <code>post</code> en cours d'itération, par exemple :</p>
+              <ul>
+                <li><code><a href="http://codex.wordpress.org/Function_Reference/the_title">the_title()</a></code></li>
+                <li><code><a href="http://codex.wordpress.org/Function_Reference/the_date">the_date()</a></code></li>
+                <li><code><a href="http://codex.wordpress.org/Function_Reference/the_content">the_content()</a></code></li>
+                <li>Voir le <a href="http://codex.wordpress.org/Template_Tags">Codex</a> pour une liste exhaustive</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Meta Box</h1>
+          </section>
+          <section>
+            <h1>Qu'est-ce que c'est ?</h1>
+            <div>
+              <ul>
+                <li>Les "Méta Box" sont des morceaux d'interface d'administration dans WordPress.</li>
+                <li>Il est possible d'en créer pour ajouter des champs dans un type de contenu particulier (URL du site pour un projet de portfolio par exemple).</li>
+                <li>Attention c'est assez complexe :</li>
+                <ul>
+                  <li>Construire l'interface, les champs et les boutons</li>
+                  <li>Gérer l'enregistrement dans la base de données</li>
+                  <li>Afficher la valeur sauvegardée lors de l'édition d'un contenu</li>
+                  <li>Tout est à faire des le fichier <code>functions.php</code></li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Ok...</h1>
+            <div>
+              <ul>
+                <li>Un ensemble de fonction et d'action :</li>
+                <ul>
+                  <li><a href="https://developer.wordpress.org/reference/functions/add_meta_box/">add_meta_box</a> pour la déclarer</li>
+                  <li><a href="https://developer.wordpress.org/reference/hooks/add_meta_boxes/">add_meta_boxes</a> action pour l'activer</li>
+                  <li><a href="https://developer.wordpress.org/reference/functions/update_post_meta/">update_post_meta</a> pour enregistrer</li>
+                  <li><a href="https://developer.wordpress.org/reference/functions/get_post_meta/">get_post_meta</a> pour récupérer</li>
+                </ul>
+                <li>Un tuto très complet en français: </li>
+                <ul>
+                  <li><a href="https://wabeo.fr/jouons-avec-les-meta-boxes/">https://wabeo.fr/jouons-avec-les-meta-boxes/</a></li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Sidebar</h1>
+          </section>
+          <section>
+            <h1>Qu'est-ce que c'est ?</h1>
+            <div>
+              <ul>
+                <li>C'est simplement, une colonne verticale contenant des widgets et affichée en complément du contenu de la page.</li>
+                <li>La plupart des thèmes intègre une "sidebar".</li>
+                <li>Les widgets à utiliser sont personnalisables dans le configurateur de thème.</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Comment les utiliser ?</h1>
+            <div>
+              <ul>
+                <li>Appeler la fonction <code><a href="https://developer.wordpress.org/reference/functions/get_sidebar/">get_sidebar</a></code> dans la page au même titre que <code><a href="https://developer.wordpress.org/reference/functions/get_header/">get_header</a></code> ou <code><a href="https://developer.wordpress.org/reference/functions/get_footer/">get_footer</a></code></li>
+                <ul>
+                  <li>Permet de définir son emplacement</li>
+                  <li>Tous les gabarits n'en utilisent pas forcément une !</li>
+                </ul>
+                <li>L'affichage est contrôlé par le fichier <code>sidebar.php</code> à la racine de votre thème</li>
+                <li>Si pas de fichier <code>sidebar.php</code>, un template par défaut est utilisé</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Exemple</h1>
+            <div style="text-align: left;">
+              <p>Dans l'action <code>after_setup_theme</code> :</p>
+              <pre><code class="php">
+  register_sidebar(array('name' => 'Ma sidebar', 'id' => 'sidebar-1'));
+              </code></pre>
+              <p>Dans <code>sidebar.php</code> :</p>
+              <pre><code class="php">
+  if( is_active_sidebar( 'sidebar-1' )  ):
+    dynamic_sidebar( 'sidebar-1' );
+  endif;
+              </code></pre>
+            </div>
+          </section>
+          <section>
+            <h1>Les widgets</h1>
+            <div style="text-align: left;">
+              <ul>
+                <li>Une fois les "sidebar" déclarées, vous pouvez ajouter des widgets à l'intérieur.</li>
+                <ul>
+                  <li>Une liste de widget est dispo par défaut</li>
+                  <li>Liste de catégories, nuage de liens...</li>
+                </ul>
+                <li>Sinon on peut en déclarer de nouveaux:</li>
+                <ul>
+                  <li>La documentation: <a href="https://codex.wordpress.org/Widgets_API">https://codex.wordpress.org/Widgets_API</a></li>
+                  <li>Un développement un peu complexe (héritage de classe)</li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Quelques liens utiles</h1>
+            <div>
+              <ul>
+                <li><a href="https://generatewp.com">https://generatewp.com</a></li>
+                <li><a href="https://codex.wordpress.org">https://codex.wordpress.org</a></li>
+                <li><a href="https://developer.wordpress.org/">https://developer.wordpress.org</a></li>
+                <li><a href="https://wabeo.fr/">https://wabeo.fr</a></li>
+                <li><a href="http://www.seomix.fr/">http://www.seomix.fr/</a></li>
+              </ul>
             </div>
           </section>
         </section>
