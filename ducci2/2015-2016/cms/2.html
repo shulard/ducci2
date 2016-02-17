@@ -559,20 +559,37 @@
             </div>
           </section>
           <section>
-            <h1>Meta Box</h1>
+            <h1>Les commentaires</h1>
           </section>
           <section>
             <h1>Qu'est-ce que c'est ?</h1>
             <div>
               <ul>
-                <li>Les "Méta Box" sont des morceaux d'interface d'administration dans WordPress.</li>
-                <li>Il est possible d'en créer pour ajouter des champs dans un type de contenu particulier (URL du site pour un projet de portfolio par exemple).</li>
-                <li>Attention c'est assez complexe :</li>
+                <li>C'est un type de contenu particulier qui est toujours rattaché à un autre contenu.</li>
+                <li>Ils sont administrables dans le back office.</li>
+                <li>L'affichage des commentaires peut être fait de plusieurs façons :</li>
                 <ul>
-                  <li>Construire l'interface, les champs et les boutons</li>
-                  <li>Gérer l'enregistrement dans la base de données</li>
-                  <li>Afficher la valeur sauvegardée lors de l'édition d'un contenu</li>
-                  <li>Tout est à faire des le fichier <code>functions.php</code></li>
+                  <li><code><a href="https://developer.wordpress.org/reference/functions/comment_form/">comment_form</a></code> dans le détail d'un article</li>
+                  <li>Utiliser le fichier <code>comments.php</code> pour personnaliser l'affichage</li>
+                </ul>
+              </ul>
+              <p style="text-align: left;"><span class="fa fa-warning"></span>&nbsp; Il ne faut pas créer un formulaire et essayer de soumettre les commentaires sans passer par l'API WordPress, c'est un risque important pour la sécurité du site !</p>
+            </div>
+          </section>
+          <section>
+            <h1>Les menus</h1>
+          </section>
+          <section>
+            <h1>Qu'est-ce que c'est ?</h1>
+            <div>
+              <ul>
+                <li>Les menus sont des listes de liens paramétrables dans le back office.</li>
+                <li>Il est possible d'en déclarer plusieurs dans le thème pour gérer l'affichage du footer, des liens sociaux...</li>
+                <li>Un comportement par défaut simple :</li>
+                <ul>
+                  <li>Activation de la fonction "cachée"</li>
+                  <li>Déclaration d'un ou plusieurs menus dans le <code>functions.php</code></li>
+                  <li>Affichage dans le site</li>
                 </ul>
               </ul>
             </div>
@@ -593,6 +610,39 @@
                   <li><a href="https://wabeo.fr/jouons-avec-les-meta-boxes/">https://wabeo.fr/jouons-avec-les-meta-boxes/</a></li>
                 </ul>
               </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Meta Box</h1>
+          </section>
+          <section>
+            <h1>Qu'est-ce que c'est ?</h1>
+            <div>
+              <ul>
+                <li>Les "Méta Box" sont des morceaux d'interface d'administration dans WordPress.</li>
+                <li>Il est possible d'en créer pour ajouter des champs dans un type de contenu particulier (URL du site pour un projet de portfolio par exemple).</li>
+                <li>Attention c'est assez complexe :</li>
+                <ul>
+                  <li>Construire l'interface, les champs et les boutons</li>
+                  <li>Gérer l'enregistrement dans la base de données</li>
+                  <li>Afficher la valeur sauvegardée lors de l'édition d'un contenu</li>
+                  <li>Tout est à faire des le fichier <code>functions.php</code></li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Exemple</h1>
+            <div style="text-align: left;">
+              <p>Dans l'action <code>after_setup_theme</code> :</p>
+              <pre><code class="php">
+  add_theme_support( 'menus' );
+  register_nav_menu( "main", "Menu principal"));
+              </code></pre>
+              <p>Dans le thème :</p>
+              <pre><code class="php">
+  wp_nav_menu(array('menu' => 'main'));
+              </code></pre>
             </div>
           </section>
           <section>
