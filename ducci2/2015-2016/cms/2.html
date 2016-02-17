@@ -595,21 +595,17 @@
             </div>
           </section>
           <section>
-            <h1>Ok...</h1>
-            <div>
-              <ul>
-                <li>Un ensemble de fonction et d'action :</li>
-                <ul>
-                  <li><a href="https://developer.wordpress.org/reference/functions/add_meta_box/">add_meta_box</a> pour la déclarer</li>
-                  <li><a href="https://developer.wordpress.org/reference/hooks/add_meta_boxes/">add_meta_boxes</a> action pour l'activer</li>
-                  <li><a href="https://developer.wordpress.org/reference/functions/update_post_meta/">update_post_meta</a> pour enregistrer</li>
-                  <li><a href="https://developer.wordpress.org/reference/functions/get_post_meta/">get_post_meta</a> pour récupérer</li>
-                </ul>
-                <li>Un tuto très complet en français: </li>
-                <ul>
-                  <li><a href="https://wabeo.fr/jouons-avec-les-meta-boxes/">https://wabeo.fr/jouons-avec-les-meta-boxes/</a></li>
-                </ul>
-              </ul>
+            <h1>Exemple</h1>
+            <div style="text-align: left;">
+              <p>Dans l'action <code>after_setup_theme</code> :</p>
+              <pre><code class="php">
+  add_theme_support( 'menus' );
+  register_nav_menu( "main", "Menu principal"));
+              </code></pre>
+              <p>Dans le thème :</p>
+              <pre><code class="php">
+  wp_nav_menu(array('menu' => 'main'));
+              </code></pre>
             </div>
           </section>
           <section>
@@ -632,17 +628,21 @@
             </div>
           </section>
           <section>
-            <h1>Exemple</h1>
-            <div style="text-align: left;">
-              <p>Dans l'action <code>after_setup_theme</code> :</p>
-              <pre><code class="php">
-  add_theme_support( 'menus' );
-  register_nav_menu( "main", "Menu principal"));
-              </code></pre>
-              <p>Dans le thème :</p>
-              <pre><code class="php">
-  wp_nav_menu(array('menu' => 'main'));
-              </code></pre>
+            <h1>Ok...</h1>
+            <div>
+              <ul>
+                <li>Un ensemble de fonction et d'action :</li>
+                <ul>
+                  <li><a href="https://developer.wordpress.org/reference/functions/add_meta_box/">add_meta_box</a> pour la déclarer</li>
+                  <li><a href="https://developer.wordpress.org/reference/hooks/add_meta_boxes/">add_meta_boxes</a> action pour l'activer</li>
+                  <li><a href="https://developer.wordpress.org/reference/functions/update_post_meta/">update_post_meta</a> pour enregistrer</li>
+                  <li><a href="https://developer.wordpress.org/reference/functions/get_post_meta/">get_post_meta</a> pour récupérer</li>
+                </ul>
+                <li>Un tuto très complet en français: </li>
+                <ul>
+                  <li><a href="https://wabeo.fr/jouons-avec-les-meta-boxes/">https://wabeo.fr/jouons-avec-les-meta-boxes/</a></li>
+                </ul>
+              </ul>
             </div>
           </section>
           <section>
