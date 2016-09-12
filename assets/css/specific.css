@@ -91,3 +91,7 @@ body.print-pdf .reveal .global-footer {
 .reveal td {
 	vertical-align: middle;
 }
+
+.reveal table.no-border td {
+	border-bottom: none;
+}
