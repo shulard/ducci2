@@ -92,6 +92,9 @@ body.print-pdf .reveal .global-footer {
 .reveal h1 {
 	font-size: 2.5em;
 }
+.reveal h2 {
+	font-size: 2em;
+}
 
 .reveal td {
 	vertical-align: middle;
