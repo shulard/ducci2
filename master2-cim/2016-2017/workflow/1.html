@@ -68,34 +68,331 @@
                     <h1>Pendant ce cours...</h1>
                     <div>
                         <ol>
-                            <li>Sommaire</li>
-                            <li>Sommaire</li>
-                            <li>Sommaire</li>
+                            <li>Il était un projet...</li>
+                            <li>Gestion de version</li>
+                            <li>Gestion des dépendances</li>
+                            <li>Intégration continue</li>
+                            <li>Outils</li>
                         </ol>
                     </div>
                 </section>
 <!--1-------------------------------------------------------------------------->
                 <section class="stack">
                     <section>
-                        <h1>Section 1</h1>
+                        <h1>Il était un projet...</h1>
                     </section>
                     <section>
-                        <h1>Section 1 partie 1</h1>
-                        <div style="text-align: left;">
-                            <p>ParagrapheParagrapheParagrapheParagraphe</p>
+                        <h1>Codé en différent langages...</h1>
+                        <div>
                             <ul>
-                                <li>Liste</li>
-                                <li>Liste</li>
-                                <li>Liste</li>
-                                <li>Liste</li>
-                                <li>Liste</li>
+                                <li><strong>BackEnd</strong>: PHP, Java, Go, JavaScript, Ruby...</li>
+                                <li><strong>FrontEnd</strong>: CSS, Sass, Less, JavaScript, CoffeeScript, TypeScript, HTML, HAML...</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h1>Utilisant des framework...</h1>
+                        <div>
+                            <ul>
+                                <li><strong>BackEnd</strong>: Symfony, Laravel, WordPress...</li>
+                                <li><strong>FrontEnd</strong>: Compass, React, Node modules...</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h1>Et des standards mal supportés...</h1>
+                        <div>
+                            <ul>
+                                <li>JavaScript écrit en ES2016</li>
+                                <li>CSS sans propriétés préfixés</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h1>Pour des navigateurs un peu butés...</h1>
+                        <div>
+                            <ul>
+                                <li>Chaque navigateur a son propre rythme de développement</li>
+                                <li>Les nouveautés sont apportées versions par versions</li>
+                                <li>Les applications développées doivent s'adapter et toujours fonctionner</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h1>Mais les développeurs aiment profiter des nouveautés</h1>
+                        <div>
+                            <ul>
+                                <li>Sans contrainte lors du développement</li>
+                                <li>Pour motiver les équipes en adoptant des pratiques innovantes</li>
+                                <li>Pour la beauté du code écrit 😀</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h1>Heureusement des outils existent !</h1>
+                        <div>
+                            <ul>
+                                <li>Pour transpiler du code</li>
+                                <ul>
+                                    <li>TypeScript => JavaScript</li>
+                                    <li>ES2016 => JavaScript</li>
+                                    <li>Sass => CSS</li>
+                                </ul>
+                                <li>Pour optimiser le code</li>
+                                <ul>
+                                    <li>Compilation / Minification</li>
+                                    <li>Nettoyage</li>
+                                </ul>
+                                <li>Pour vérifier le code</li>
+                                <ul>
+                                    <li>Application de style de code</li>
+                                    <li>Tests unitaires et tests d'intégration</li>
+                                </ul>
+                            </ul>
+                            <p>Pour cela le code doit être géré correctement</p>
+                        </div>
+                    </section>
+                </section>
+<!--2-------------------------------------------------------------------------->
+                <section class="stack">
+                    <section>
+                        <h1>Gestion de version</h1>
+                    </section>
+                    <section>
+                        <h1>Qu'est-ce que c'est ?</h1>
+                        <div style="text-align: left;">
+                            <p>Principe de maintenir l'ensemble des versions d'un ou plusieurs fichiers.</p>
+                            <ul>
+                                <li>Centralisé : Subversion, CVS</li>
+                                <ul>
+                                    <li>Tout est stocké sur un serveur</li>
+                                    <li>Le dépôt sans le serveur est inutile</li>
+                                </ul>
+                                <li>Décentralisé : Git, Mercurial, Baazar, GNU Arch...</li>
+                                <ul>
+                                    <li>Chaque utilisateur dispose de sa propre copie</li>
+                                    <li>Chaque copie est indépendante</li>
+                                    <li>Plusieurs copie peuvent partager des modifications</li>
+                                </ul>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h1>Pourquoi ?</h1>
+                        <div>
+                            <ul>
+                                <li>Collaborer autour du code source</li>
+                                <li>Avoir une trace de l'évolution d'un projet</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h1>Les branches</h1>
+                        <div>
+                            <ul>
+                                <li>Différentes versions du code source indépendantes</li>
+                                <li>Possibilité de fusionner deux branches</li>
+                            </ul>
+                            <img src="images/branching-illustration.png" width="400"/>
+                        </div>
+                    </section>
+                    <section>
+                        <h1>Lexique</h1>
+                        <div>
+                            <ul>
+                                <li><code>Dépôt</code>,<code>Repository</code></li>
+                                <ul>
+                                    <li>Conteneur utilisé par le logiciel pour stocker les versions</li>
+                                </ul>
+                                <li><code>Révision</code>,<code>Commit</code></li>
+                                <ul>
+                                    <li>Une modification de code</li>
+                                </ul>
+                                <li><code>Branche</code>,<code>Branch</code></li>
+                                <ul>
+                                    <li>Un flux de modification du code</li>
+                                </ul>
+                            </ul>
+                        </div>
+                    </section>
+                </section>
+<!--3-------------------------------------------------------------------------->
+                <section class="stack">
+                    <section>
+                        <h1>Gestion des dépendances</h1>
+                    </section>
+                    <section>
+                        <h1>Qu'est-ce que c'est ?</h1>
+                        <div style="text-align: left;">
+                            <p>Principe de gestion du code source externe intégré à l'application.</p>
+                            <ul>
+                                <li>FrontEnd : NPM, Bower...</li>
+                                <li>BackEnd : Composer, Bundler...</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h1>Comment en PHP ?</h1>
+                        <div>
+                            <p>Un fichier pour décrire les dépendances du projet et une commande pour les installer.</p>
+                            <small>composer.json</small>
+                            <pre><code class="json">
+                {
+                    "name": "exoskills/applux-bo",
+                    "description": "ExoSkills - AppLux Back Office.",
+                    "license": "proprietary",
+                    "type": "project",
+                    "require": {
+                        "php": ">=5.5.9",
+                        "laravel/framework": "5.2.*",
+                        ...
+                    },
+                    "require-dev": {
+                        "phpunit/phpunit": "~4.0",
+                        "squizlabs/php_codesniffer": "~2"
+                    }
+                }
+                            </code></pre>
+                        </div>
+                    </section>
+                    <section>
+                        <h1>Comment en JavaScript ?</h1>
+                        <div>
+                            <small>package.json</small>
+                            <pre><code class="json">
+                {
+                  "name": "Applux-BO",
+                  "version": "1.0.0",
+                  "description": "Back Office - Afflux",
+                  "private": true,
+                  "repository": {
+                    "type": "git",
+                    "url": "git+https://gitlab.com/exoskills/applux-bo"
+                  },
+                  "dependencies": {
+                    "autoprefixer": "^6.3.7",
+                    "babel-plugin-transform-inline-environment-variables": "^6.8.0",
+                    "babel-preset-es2015": "^6.9.0",
+                    "babelify": "^7.3.0",
+                    ...
+                  },
+                  "devDependencies": {
+                    "nodemon": "^1.9.2",
+                    "parallelshell": "^2.0.0",
+                    "watchify": "^3.7.0"
+                  }
+                }
+                            </code></pre>
+                        </div>
+                    </section>
+                    <section>
+                        <h1>Comment en Ruby ?</h1>
+                        <div>
+                            <small>Gemfile</small>
+                            <pre><code class="ruby">
+                source "https://rubygems.org"
+                gemspec :name => "jekyll"
+
+                gem "rake", "~> 11.0"
+
+                # Dependency of jekyll-mentions. RubyGems in Ruby 2.1 doesn't shield us from this.
+                gem "activesupport", "~> 4.2", :groups => [:test_legacy, :site] if RUBY_VERSION < '2.2.2'
+
+                group :development do
+                  gem "launchy", "~> 2.3"
+                  gem "pry"
+
+                  unless RUBY_ENGINE == "jruby"
+                    gem "pry-byebug"
+                  end
+                end
+
+                            </code></pre>
+                        </div>
+                    </section>
+                    <section>
+                        <h1>Mais pas que...</h1>
+                        <div>
+                            <ul>
+                                <li>Fiabilisation de l'environnement</li>
+                                <li>Détection de fonctionnalités (extensions)</li>
+                                <li>Définition de scripts génériques</li>
+                                <li>Gestion de l'autoload...</li>
+                            </ul>
+                    </section>
+                </section>
+<!--4-------------------------------------------------------------------------->
+                <section class="stack">
+                    <section>
+                        <h1>Intégration continue</h1>
+                    </section>
+                    <section>
+                        <h1>Principe</h1>
+                        <div>
+                            <ul>
+                                <li>Workflow de traitement du code</li>
+                                <ul>
+                                    <li>Vérifier chaque commit pour garantir la stabilité</li>
+                                </ul>
+                                <li>Tester toute l'application (backend / frontend)</li>
+                                <ul>
+                                    <li>Identifier les étapes (préparation, tests, build...)</li>
+                                    <li>Créer un contexte de test fiable (données, outils tiers)</li>
+                                    <li>Rendre les tests reproductibles (local, préprod...)</li>
+                                </ul>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <img src="images/builds.png" />
+                    </section>
+                    <section>
+                        <img src="images/build-workflow.png" />
+                    </section>
+                    <section>
+                        <img src="images/build-detail.png" />
+                    </section>
+                    <section>
+                        <h1>L'environnement d'exécution est :</h1>
+                        <div>
+                            <ul>
+                                <li>Éphémère</li>
+                                <li>Reconstructible</li>
+                                <li>Léger</li>
+                                <li>Complet</li>
+                                <li>Identique à la production</li>
+                                <li>Le plus simple possible</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h1>Les étapes sont :</h1>
+                        <div>
+                            <ul>
+                                <li>Fiables</li>
+                                <li>Séquencées</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h1>Des outils spécifiques</h1>
+                        <div>
+                            <ul>
+                                <li>Task runner</li>
+                                <ul><li>Gulp, Phing, Ant, Make, Grunt...</li></ul>
+                                <li>Tests unitaires</li>
+                                <ul><li>PHPUnit, Atoum, QUnit, UnitJS...</li></ul>
+                                <li>Tests d'intégration</li>
+                                <ul><li>Behat, Selenium...</li></ul>
+                                <li>Plaforme d'intégration continue</li>
+                                <ul><li>TravisCI, GitlabCI, Jenkins, Hudson, TeamCity...</li></ul>
                             </ul>
                         </div>
                     </section>
                 </section>
 <!--#########################################################################-->
                 <section data-background-color="rgba( 0, 174, 239, 0.6 )">
-                    <h1>Merci pour votre attention</h1>
+                    <!-- <h1>Merci pour votre attention</h1> -->
                 </section>
             </div>
 
