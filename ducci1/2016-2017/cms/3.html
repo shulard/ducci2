@@ -178,10 +178,14 @@
             <h1>Exemple</h1>
             <div style="text-align: left;">
               <pre><code class="php">
-  wp_register_style('mon-style', get_stylesheet_directory_uri().'/style.css');
-  wp_enqueue_style('mon-style');
+  function montheme_scripts()
+  {
+    wp_register_style('mon-style', get_stylesheet_directory_uri().'/style.css');
+    wp_enqueue_style('mon-style');
 
-  wp_enqueue_script('script1', get_stylesheet_directory_uri().'/js/script1.js');
+    wp_enqueue_script('script1', get_stylesheet_directory_uri().'/js/script1.js');
+  }
+  add_action('wp_enqueue_scripts', 'montheme_scripts');
               </code></pre>
               <p>Ensuite on laisse la magie de Wordpress opérer avec <a href="http://codex.wordpress.org/Function_Reference/wp_head"><code>wp_head</code></a> et <a href="http://codex.wordpress.org/Function_Reference/wp_footer"><code>wp_footer</code></a></p>
             </div>
