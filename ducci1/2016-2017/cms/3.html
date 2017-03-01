@@ -71,7 +71,6 @@
               <li>Gestion des assets (JS, CSS)</li>
               <li><code>actions</code> et <code>filters</code></li>
               <li>Gestion des médias</li>
-              <li>Gestion des traductions</li>
               <li>Sécurité</li>
               <li>Concepts avancés</li>
               <li>WP-CLI à la rescousse</li>
@@ -351,51 +350,7 @@
 <!--5-------------------------------------------------------------------------->
         <section class="stack">
           <section>
-            <h1>5. Gestion des traductions</h1>
-          </section>
-          <section>
-            <h1>Gettext comme format de fichier</h1>
-            <div style="text-align: left;">
-              <p>Wordpress utilise un sytème de traduction pour tous les libellés d'interface.<br/>C'est ce système qui permet de voir l'interface d'administration ou le site en différente langue.</p>
-              <p>Les fichiers de langue sont au format <code>gettext</code>. J'utilise le logiciel "<a href="https://poeditor.com/">Poedit</a>" pour les manipuler.</p>
-              <p>La documentation est assez complète sur cette partie: <a href="http://codex.wordpress.org/Translating_WordPress">Codex</a>, <a href="https://make.wordpress.org/polyglots/handbook/translating/basics/">Wordpress community</a></p>
-            </div>
-          </section>
-          <section>
-            <h1>Charger un dictionnaire</h1>
-            <div style="text-align: left;">
-              <p>On peut charger un dictionnaire dépendant de la <code>locale</code> en cours:</p>
-              <pre><code class="php">
-  load_theme_textdomain( 'domain', get_template_directory() . '/languages' );
-              </code></pre>
-              <p>Ou alors charger un dictionnaire directement:</p>
-              <pre><code class="php">
-  load_textdomain( 'domain', dirname(__FILE__) . '/lang/fr.mo' );
-              </code></pre>
-              <p>La locale n'est pas dynamique en fonction du pays de l'utilisateur. Il s'agit de la langue d'installation du CMS.</p>
-            </div>
-          </section>
-          <section>
-            <h1>Utiliser les fonctions natives</h1>
-            <div style="text-align: left; width: 110%; margin-left: -5%">
-            <ul>
-              <li><code>__('libelle', 'domain')</code></li>
-              <ul>
-                <li>pour traduire le 'libelle' en utilisant le domaine 'domain'</li>
-              </ul>
-              <li><code>_e('libelle', 'domain')</code> = <code>echo __(...)</code></li>
-              <li><code>_n('singulier', 'pluriel', $number, 'domain')</code></li>
-              <li><code>_x('libelle', 'context' 'domain')</code></li>
-              <li><code>_ex('libelle', 'context', 'domain')</code> = <code>echo _x(...)</code></li>
-              <li><code>_nx('singuler', 'pluriel', 'context', 'domain')</code></li>
-            </ul>
-            <p>Pour plus de détail voir la <a href="https://developer.wordpress.org/themes/functionality/internationalization/">documentation complète</a>.</p>
-          </section>
-        </section>
-<!--6-------------------------------------------------------------------------->
-        <section class="stack">
-          <section>
-            <h1>6. Sécurité</h1>
+            <h1>5. Sécurité</h1>
           </section>
           <section>
             <h1>Affichage en front</h1>
@@ -425,10 +380,10 @@
             </div>
           </section>
         </section>
-<!--7-------------------------------------------------------------------------->
+<!--6-------------------------------------------------------------------------->
         <section class="stack">
           <section>
-            <h1>7. Concepts avancés</h1>
+            <h1>6. Concepts avancés</h1>
           </section>
           <section>
             <h1><code>WP_Query</code> </h1>
@@ -635,10 +590,10 @@
             </div>
           </section>
         </section>
-<!--8-------------------------------------------------------------------------->
+<!--7-------------------------------------------------------------------------->
         <section class="stack">
           <section>
-            <h1>8. WP-CLI à la rescousse</h1>
+            <h1>7. WP-CLI à la rescousse</h1>
           </section>
           <section>
             <h1>Pourquoi ?</h1>
@@ -725,6 +680,23 @@
           </section>
         </section>
 <!--#########################################################################-->
+        <section id="rendu">
+          <h1>Rendu</h1>
+          <div style="text-align: left;">
+            <p><strong>Objectif:</strong> Finaliser le thème HTML5UP.</p>
+            <ul>
+              <li>Template d'affichage de catégorie</li>
+              <ul>
+                <li>Affichage de la description de la catégorie</li>
+                <li>Liste avec pagination</li>
+                <li>Utilisation de l'image d'en-tête dans la liste</li>
+              </ul>
+              <li>Template d'affichage de page</li>
+              <li>Création d'un type de contenu personnalisé <code>client</code></li>
+              <li>Template d'affichage d'un client</li>
+            </ul>
+          </div>
+        </section>
         <section data-background-color="rgba( 0, 174, 239, 0.6 )">
         </section>
       </div>
