@@ -443,7 +443,7 @@
                 <li>L'affichage des commentaires peut être fait de plusieurs façons :</li>
                 <ul>
                   <li><code><a href="https://developer.wordpress.org/reference/functions/comments_template/">comments_template</a></code> dans le détail d'un article</li>
-                  <li>Utiliser le fichier <code>comments.php</code> pour personnaliser l'affichage</li>
+                  <li>Créer un fichier <code>comments.php</code> pour paramétrer l'affichage</li>
                 </ul>
               </ul>
               <p style="text-align: left;"><span class="fa fa-warning"></span>&nbsp; Il ne faut pas créer un formulaire et essayer de soumettre les commentaires sans passer par l'API WordPress, c'est un risque important pour la sécurité du site !</p>
@@ -473,7 +473,7 @@
               <p>Dans l'action <code>after_setup_theme</code> :</p>
               <pre><code class="php">
   add_theme_support( 'menus' );
-  register_nav_menu( "main", "Menu principal"));
+  register_nav_menu( "main", "Menu principal");
               </code></pre>
               <p>Dans le thème :</p>
               <pre><code class="php">
