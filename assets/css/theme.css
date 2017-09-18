@@ -17,8 +17,8 @@ html * {
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: #002b36;
-  background-color: #002b36;
+  background: #042029;
+  background-color: #042029;
 }
 
 .reveal {
@@ -270,10 +270,13 @@ body {
   transition: all .15s ease;
 }
 
+.reveal [data-background-color="rgba( 0, 174, 239, 0.6 )"] a {
+  color: inherit;
+}
+
 .reveal a:hover {
   color: rgba(0, 159, 227, 0.5);
   text-shadow: none;
-  border-bottom: 3px solid rgba(0, 159, 227, 0.5);
 }
 
 .reveal .roll span:after {
