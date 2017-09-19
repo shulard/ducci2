@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="fr">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>DUCCI2 - Workflow</title>
+
+    <meta name="description" content="Automatisation, workflow de développement, intégration continue...">
+    <meta name="author" content="Stéphane HULARD">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="../../../assets/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../../../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../assets/css/theme.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="../../../assets/css/solarized-dark.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? '../../../assets/reveal.js/css/print/pdf.css' : '../../../assets/reveal.js/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="../../../assets/reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal concave center">
+      <p class="global-footer">
+        <a href="https://chstudio.fr"><img src="../../../logo.png" width="20" /></a>
+        2017&nbsp;-&nbsp;ICOM Université Lyon 2&nbsp;-&nbsp;DUCCI 2
+      </p>
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section data-background-color="rgba( 0, 174, 239, 0.6 )" data-background="../../../assets/images/workspace.jpg">
+          <h1>Workflow</h1>
+          <p>Automatisation, développement, intégration continue...</p>
+          <p><small>Session 1</small></p>
+        </section>
+        <section id="who-i-am" data-background-color="rgba( 0, 174, 239, 0.6 )">
+          <h1>Stéphane HULARD<br/><small>Consultant / Formateur</small></h1>
+          <table class="no-border">
+            <tbody>
+              <tr><td><span class="fa fa-building-o"></td><td><a href="https://chstudio.fr">https://chstudio.fr</a></td></tr>
+              <tr><td><span class="fa fa-twitter-square"></td><td><a href="https://twitter.com/s_hulard">@s_hulard</a></td></tr>
+              <tr><td><span class="fa fa-github-square"></td><td><a href="http://github.com/shulard">http://github.com/shulard</a></td></tr>
+              <tr><td><span class="fa fa-suitcase"></td><td><a href="mailto:s.hulard@chstudio.fr">s.hulard@chstudio.fr</a></td></tr>
+              <tr><td><span class="fa fa-university"></td><td><a href="mailto:s.hulard@univ-lyon2.fr">s.hulard@univ-lyon2.fr</a></td></tr>
+            </tbody>
+          </table>
+        </section>
+<!--#########################################################################-->
+<!--1-------------------------------------------------------------------------->
+        <section class="stack">
+          <section data-background="../../../assets/images/once-upon-a-time.jpg">
+            <h1>Un projet web aujourd’hui...</h1>
+          </section>
+          <section>
+            <h1>Codé en différent langages...</h1>
+            <div>
+              <ul>
+              <li><strong>BackEnd</strong>: PHP, Java, Go, JavaScript, Ruby...</li>
+              <li><strong>FrontEnd</strong>: CSS, Sass, Less, JavaScript, CoffeeScript, TypeScript, HTML, HAML...</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Utilisant des frameworks...</h1>
+            <div>
+              <ul>
+              <li><strong>BackEnd</strong>: Symfony, Laravel, WordPress...</li>
+              <li><strong>FrontEnd</strong>: Compass, React, Angular, Express...</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Des standards mal supportés...</h1>
+            <div>
+              <ul>
+              <li>Versions de JavaScript (ES2016, ...)</li>
+              <li>Propriétés préfixées en CSS</li>
+              <li>HTML5</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Des navigateurs un peu butés...</h1>
+            <div>
+              <ul>
+              <li>Rythme de développement spécifique</li>
+              <li>Nouveautés versions par versions</li>
+              <li>Les applications développées doivent s'adapter et toujours fonctionner</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Mais on aime les nouveautés</h1>
+            <div>
+              <ul>
+                <li>Sans contrainte lors du développement</li>
+                <li>Pour motiver les équipes en adoptant des pratiques innovantes</li>
+                <li>Pour la beauté du code écrit 😀</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1><i class="fa fa-exclamation-triangle"></i> Obsolescence programmée</h1>
+            <div>
+              <ul>
+                <li>Être attentifs aux versions utilisées (langages, outils)</li>
+                <li>Un logiciel a un cycle de vie propre</li>
+              </ul>
+            </div>
+          </section>
+        </section>
+<!--2-------------------------------------------------------------------------->
+        <section class="stack">
+          <section data-background="../../../assets/images/tools.jpg">
+            <h1>Des outils existent !</h1>
+          </section>
+          <section>
+            <h1>Transpiler du code</h1>
+            <div>
+              <table>
+              <tr>
+                <td>TypeScript</td>
+                <td>=></td>
+                <td>JavaScript</td>
+              </tr>
+              <tr>
+                <td>ES2016</td>
+                <td>=></td>
+                <td>JavaScript</td>
+              </tr>
+              <tr>
+                <td>Sass</td>
+                <td>=></td>
+                <td>CSS</td>
+              </tr>
+              </table>
+              <p><a href="https://babeljs.io/">Babel</a>, <a href="https://sass-lang.com/libsass">lib-sass</a>, ...</p>
+            </div>
+          </section>
+          <section>
+            <h1>Optimiser du code</h1>
+            <div>
+              <ul>
+              <li>Compilation / Minification</li>
+              <li>Nettoyage</li>
+              </ul>
+              <p><a href="https://github.com/mishoo/UglifyJS">Uglify.js</a>, <a href="http://postcss.org/">PostCSS</a>, <a href="https://github.com/postcss/autoprefixer">AutoPrefixer</a>, ...</p>
+            </div>
+          </section>
+          <section>
+            <h1>Vérifier le code</h1>
+            <div>
+              <ul>
+              <li>Respect de norme, d'un schéma</li>
+              <li>Application de style de code</li>
+              <li>Tests unitaires et tests d'intégration</li>
+              </ul>
+              <p><a href="http://validator.w3.org/">W3C</a>, <a href="https://github.com/squizlabs/PHP_CodeSniffer">PHP_CodeSniffer</a>, <a href="http://cs.sensiolabs.org/">PHPCS Fixer</a>, <a href="https://phpunit.de/">PHPUnit</a>, <a href="http://atoum.org/">Atoum</a>, <a href="http://docs.behat.org/">Behat</a>, ...</p>
+            </div>
+          </section>
+        </section>
+<!--3-------------------------------------------------------------------------->
+        <section class="stack">
+          <section data-background="../../../assets/images/lifecycle.jpg">
+            <h1><i class="fa fa-repeat"></i> Cycle de vie du projet</h1>
+          </section>
+          <section data-background="../../../assets/images/complexity.jpg">
+            <h1>Une chaine complexe</h1>
+          </section>
+          <section>
+            <h1>Imbriquer les écosystèmes</h1>
+            <div>
+              <ul>
+              <li>Graphique (front, documents...)</li>
+              <li>Logique (code)</li>
+              <li>Statique (cache)</li>
+              </ul>
+            </div>
+            <aside class="notes">
+              Différentes étapes, compilation du projet par couche.
+            </aside>
+          </section>
+          <section>
+            <h1>Garantir la stabilité</h1>
+            <div>
+              <ul>
+              <li>Tests unitaires</li>
+              <li>Tests d'intégration</li>
+              <li>Gestion des données, migrations</li>
+              </ul>
+            </div>
+            <aside class="notes">
+              Tests unitaires, tests d'intégration, gestion des données, migration.
+            </aside>
+          </section>
+          <section>
+            <h1>Packager et livrer</h1>
+            <div>
+              <ul>
+              <li>Qu'est-ce qui est le livrable ?</li>
+              <li>Comment le générer ?</li>
+              </ul>
+            </div>
+            <aside class="notes">
+              Toujours définir un cycle d'étape séquencée et reproductible.
+            </aside>
+          </section>
+        </section>
+        <section class="stack">
+          <section data-background-color="rgba( 0, 174, 239, 0.8 )" data-background="../../../assets/images/branches.jpg">
+            <h1>Gestion de version</h1>
+          </section>
+          <section>
+            <blockquote cite="https://fr.wikipedia.org/wiki/Gestion_de_versions">
+              La gestion de versions (en anglais version control ou revision control) consiste à maintenir l'ensemble des versions d'un ou plusieurs fichiers (généralement en texte). Essentiellement utilisée dans le domaine de la création de logiciels, elle concerne surtout la gestion des codes source.
+            </blockquote>
+          </section>
+          <section>
+            <h1>Pourquoi ?</h1>
+            <div>
+              <ul>
+                <li>Collaborer autour du code source</li>
+                <li>Avoir une trace de l'évolution d'un projet</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Old school</h1>
+            <ul>
+              <li>Renommer les fichiers <code>.old</code>, <code>.2</code></li>
+              <li>Dupliquer un dossier...</li>
+            </ul>
+            <p><i class="fa fa-exclamation-triangle"></i> Pas très fiable...</p>
+          </section>
+          <section>
+            <h1>Solutions logicielles</h1>
+            <ul>
+              <li>Centralisées : <a href="https://subversion.apache.org/">Subversion</a>, <a href="http://cvs.nongnu.org/">CVS</a></li>
+              <li>Décentralisées : <a href="https://git-scm.com/">Git</a>, <a href="https://www.mercurial-scm.org/">Mercurial</a>, <a href="http://wiki.bazaar.canonical.com/">Baazar</a>, <a href="https://www.gnu.org/software/gnu-arch/">GNU Arch</a>...</li>
+            </ul>
+          </section>
+        </section>
+        <section class="stack">
+          <section data-background="../../../assets/images/network.jpg">
+            <h1>Centralisé ou décentralisé ?</h1>
+          </section>
+          <section>
+            <h1>Centralisé</h1>
+            <ul>
+              <li>Tout est stocké sur un serveur</li>
+              <li>Le dépôt sans le serveur est inutile</li>
+            </ul>
+            <p><i class="fa fa-exclamation-triangle"></i> Si le serveur crash, plus rien...</p>
+          </section>
+          <section>
+            <h1>Décentralisé</h1>
+            <ul>
+              <li>Chaque utilisateur dispose de sa propre copie</li>
+              <li>Chaque copie est indépendante</li>
+              <li>Plusieurs copie peuvent partager des modifications</li>
+            </ul>
+            <p><i class="fa fa-exclamation-triangle"></i> S'impose comme standard grâce à la démocratisation de Git</p>
+          </section>
+          <section>
+            <h1>Mais toujours un <code>client</code></h1>
+            <ul>
+              <li>Logiciel sur le poste du développeur</li>
+              <li>Gérer la copie locale</li>
+              <li>Publier les modifications</li>
+            </ul>
+            <p><i class="fa fa-exclamation-triangle"></i> Décentralisé ne veut pas dire que ce n'est pas partagé.</p>
+          </section>
+        </section>
+        <section class="stack">
+          <section data-background="../../../assets/images/branches-2.jpg">
+            <h1>Concepts généraux</h1>
+          </section>
+          <section>
+            <h1>Une philosophie</h1>
+            <p>Une multitude d'outils mais un seul besoin.</p>
+          </section>
+          <section>
+            <h1>Repository / Dépôt</h1>
+            <p>Conteneur utilisé par le logiciel pour stocker les versions.</p>
+          </section>
+          <section>
+            <h1>Commit / Révision</h1>
+            <ul>
+              <li>Décrit une modification</li>
+              <li>Contient uniquement ce qui est utile pour la consolider</li>
+            </ul>
+          </section>
+          <section>
+            <h1>Branches</h1>
+            <p>Différentes versions du code source indépendantes.</p>
+            <img src="../../../assets/images/branching-illustration.png" class="plain" />
+          </section>
+          <section>
+            <h1>Tags</h1>
+            <ul>
+              <li>Version figée du dépôt</li>
+              <li>Attaché à un commit particulier</li>
+            </ul>
+            <p><i class="fa fa-exclamation-triangle"></i> L'immutabilité du tag et primordiale !</p>
+          </section>
+        </section>
+<!--1-------------------------------------------------------------------------->
+        <section class="stack">
+          <section data-background-color="rgba( 0, 174, 239, 0.8 )" data-background="../../../assets/images/network-2.jpg">
+            <h1>Gestion des dépendances</h1>
+          </section>
+          <section>
+            <h1>Réutiliser</h1>
+            <p>Du code est écrit tout les jours, fiabilisé et mis en open source. Utiliser ce code est un gain de temps considérable.</p>
+          </section>
+          <section>
+            <h1>Fiabiliser</h1>
+            <p>Bénéficier de l'expérience d'autres développeurs en utilisant un code testé et propre.</p>
+          </section>
+          <section>
+            <h1>DRY <small>Don't repeat yourself</small></h1>
+            <ul>
+              <li>Projets internes</li>
+              <li>Librairies / dépôts privées</li>
+            </ul>
+          </section>
+          <section>
+            <h1>Environnement</h1>
+            <ul>
+              <li>Les dépendances ne sont pas que des librairies</li>
+              <li>Version du language, fonctionnalités peuvent être testée</li>
+              <li>Permet de garantir la validité de l'environnement avant l'installation</li>
+            </ul>
+          </section>
+        </section>
+<!--1-------------------------------------------------------------------------->
+        <section class="stack">
+          <section data-background="../../../assets/images/network.jpg">
+            <h1>Les outils</h1>
+          </section>
+          <section>
+            <h1>En Ruby ?</h1>
+            <code>Gemfile</code>
+            <pre class="small"><code class="ruby">source "https://rubygems.org"
+gemspec :name => "jekyll"
+
+gem "rake", "~> 11.0"
+
+# Dependency of jekyll-mentions. RubyGems in Ruby 2.1 doesn't shield us from this.
+gem "activesupport", "~> 4.2", :groups => [:test_legacy, :site] if RUBY_VERSION < '2.2.2'
+
+group :development do
+  gem "launchy", "~> 2.3"
+  gem "pry"
+
+  unless RUBY_ENGINE == "jruby"
+  gem "pry-byebug"
+  end
+end</code></pre>
+          </section>
+          <section>
+            <h1>En PHP ?</h1>
+            <p><code>composer.json</code></p>
+            <pre class="small"><code class="json">{
+  "name": "vendor/mon-project",
+  "description": "Description.",
+  "license": "proprietary",
+  "type": "project",
+  "require": {
+    "php": ">=7.0",
+    "laravel/framework": "5.5.*",
+    ...
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~6.0",
+    "squizlabs/php_codesniffer": "~3"
+  }
+}</code></pre>
+          </section>
+          <section>
+      <h1>En JavaScript ?</h1>
+      <code>package.json</code>
+      <pre class="small"><code class="json">{
+  "name": "project",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+  "autoprefixer": "^6.3.7",
+  "babel-plugin-transform-inline-environment-variables": "^6.8.0",
+  "babel-preset-es2015": "^6.9.0",
+  "babelify": "^7.3.0",
+  ...
+  },
+  "devDependencies": {
+  "nodemon": "^1.9.2",
+  "parallelshell": "^2.0.0",
+  "watchify": "^3.7.0"
+  }
+}</code></pre>
+          </section>
+        </section>
+<!--#########################################################################-->
+        <section data-background-color="rgba( 0, 174, 239, 0.6 )">
+        </section>
+      </div>
+
+    </div>
+
+    <script src="../../../assets/reveal.js/lib/js/head.min.js"></script>
+    <script src="../../../assets/reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: false,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: '../../../assets/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../../../assets/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../../../assets/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../../../assets/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '../../../assets/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '../../../assets/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+  </body>
+</html>
