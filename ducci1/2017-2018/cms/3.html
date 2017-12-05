@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="fr">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>DUCCI - Systèmes de gestion de contenu</title>
+
+    <meta name="description" content="Un cours pour présenter les systèmes de gestion de contenu, leur intérêt et leur fonctionnement général...">
+    <meta name="author" content="Stéphane HULARD">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="../../../assets/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../../../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../assets/css/theme.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="../../../assets/css/solarized-dark.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? '../../../assets/reveal.js/css/print/pdf.css' : '../../../assets/reveal.js/css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="../../../assets/reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal concave center">
+      <p class="global-footer">
+        <a href="https://chstudio.fr"><img src="../../../logo.png" width="20" /></a>
+        2017/2018&nbsp;-&nbsp;ICOM Université Lyon 2&nbsp;-&nbsp;DUCCI
+      </p>
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section data-background-color="rgba( 0, 174, 239, 0.8 )">
+          <h1>WordPress</h1>
+          <p>Création de thème, règles et outils</p>
+        </section>
+        <section id="who-i-am" data-background-color="rgba( 0, 174, 239, 0.8 )">
+          <h1>Stéphane HULARD<br/><small>Consultant / Formateur</small></h1>
+          <table class="no-border">
+            <tbody>
+              <tr><td><span class="fa fa-building-o"></td><td><a href="https://chstudio.fr">https://chstudio.fr</a></td></tr>
+              <tr><td><span class="fa fa-twitter-square"></td><td><a href="https://twitter.com/s_hulard">@s_hulard</a></td></tr>
+              <tr><td><span class="fa fa-github-square"></td><td><a href="http://github.com/shulard">http://github.com/shulard</a></td></tr>
+              <tr><td><span class="fa fa-suitcase"></td><td><a href="mailto:s.hulard@chstudio.fr">s.hulard@chstudio.fr</a></td></tr>
+              <tr><td><span class="fa fa-university"></td><td><a href="mailto:s.hulard@univ-lyon2.fr">s.hulard@univ-lyon2.fr</a></td></tr>
+            </tbody>
+          </table>
+        </section>
+<!--#########################################################################-->
+        <section>
+          <h1>Pendant ce cours...</h1>
+          <div>
+            <ol>
+              <li>Comment&nbsp;structurer&nbsp;un&nbsp;thème</li>
+              <li>Gestion des assets (JS, CSS)</li>
+              <li><code>actions</code> et <code>filters</code></li>
+              <li>Gestion des médias</li>
+              <li>Sécurité</li>
+              <li>Concepts avancés</li>
+              <li>WP-CLI à la rescousse</li>
+            </ol>
+          </div>
+        </section>
+<!--1-------------------------------------------------------------------------->
+        <section class="stack">
+          <section>
+            <h1>1. Comment structurer un thème</h1>
+          </section>
+          <section>
+            <h1>Comprendre les gabarits</h1>
+            <div style="text-align: left;">
+              <p>Un template est un représentation complète des possibilités offertes pour afficher les contenus. Il faut bien prendre en compte toutes les contraintes.</p>
+              <ul>
+                <li>Les header/footers contiennent le plus grand dénominateur commun de tous les gabarits</li>
+                <li>Que sera la page d'accueil, une page statique, une page fixe ?</li>
+                <li>Quel fichier créer pour répondre à mes besoins ?</li>
+                <li>Est-ce que je dois créer <code>index.php</code> ?</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Des gabarits ?</h1>
+            <div style="text-align: left;">
+              <ul>
+                <li>Quand on parle de système de gestion de contenu on parle de gabarits.</li>
+                <li>Il représente les modèles de page</li>
+                <li>Ils contiennent toute la logique d'affichage</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Identifier les blocs dupliqués</h1>
+            <div style="text-align: left;">
+              <p>Il arrive qu'on retrouve dans différents gabarits le même bloc qui affiche les mêmes informations.<br/>Même s'il est placé à un endroit différent ou avec un style un peu adapté, il est important de créer un fichier réutilisable</p>
+              <ul>
+                <li>Optimiser la maintenance</li>
+                <li>Généraliser les règles de gestion</li>
+                <li>Faciliter l'intégration</li>
+                <li>Éviter la duplication (<a href="http://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas">DRY</a>)</li>
+              </ul>
+            </div>
+          </section>
+        </section>
+<!--2-------------------------------------------------------------------------->
+        <section class="stack">
+          <section>
+            <h1>2. Gestion des assets (JS, CSS)</h1>
+          </section>
+          <section>
+            <h1>Les assets ??</h1>
+            <div style="text-align: left;">
+              <ul>
+                <li>Les assets sont les fichiers JavaScript et CSS qui sont utilisés dans votre thème.</li>
+                <li>Ils sont généralement stockés dans le répertoire du thème</li>
+                <li>Ces fichiers ont un impact direct sur le ressenti des utilisateurs sur les performances du site</li>
+                <ul>
+                  <li>Optimisation, compression et performances</li>
+                  <li>Ne pas tout charger tout le temps</li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Pourquoi pas en dur ?</h1>
+            <div style="text-align: left;">
+              <p>
+                Pour charger ces fichiers, il faut ajouter dans le code html des balises <code>&lt;link&gt;</code> et <code>&lt;script&gt;</code>.</p>
+              <p>
+                Selon le site qui utilise le thème, l'URL vers ces fichiers peut être différente. Wordpress propose des outils pour toujours disposer de la bonne URL.
+              </p>
+            </div>
+          </section>
+          <section>
+            <h1>Attention à l'emplacement d'appel</h1>
+            <div style="text-align: left;">
+              <p>Tout le code présent dans <code>functions.php</code> est exécuté dans le front-end et le back-end. Il faut utiliser les <code>actions</code> et <code>filters</code> pour s'assurer que les CSS et JS ne soient pas chargés au mauvais endroit !</p>
+            </div>
+          </section>
+          <section>
+            <h1>Les méthodes</h1>
+            <div style="text-align: left;">
+              <ul>
+                <li>
+                  Pour déclarer un style/script mais sans le charger directement.
+                </li>
+                <ul>
+                  <li><a href="http://codex.wordpress.org/Function_Reference/wp_register_style"><code>wp_register_style</code></a></li>
+                  <li><a href="http://codex.wordpress.org/Function_Reference/wp_register_script"><code>wp_register_script</code></a></li>
+                </ul>
+                <li>
+                  Pour déclarer un style/script à charger dans la page en cours.
+                </li>
+                <ul>
+                  <li><a href="http://codex.wordpress.org/Function_Reference/wp_enqueue_style"><code>wp_enqueue_style</code></a></li>
+                  <li><a href="http://codex.wordpress.org/Function_Reference/wp_enqueue_script"><code>wp_enqueue_script</code></a></li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Exemple</h1>
+            <div style="text-align: left;">
+              <pre><code class="php">
+  function montheme_scripts()
+  {
+    wp_register_style('mon-style', get_stylesheet_directory_uri().'/style.css');
+    wp_enqueue_style('mon-style');
+
+    wp_enqueue_script('script1', get_stylesheet_directory_uri().'/js/script1.js');
+  }
+  add_action('wp_enqueue_scripts', 'montheme_scripts');
+              </code></pre>
+              <p>Ensuite on laisse la magie de Wordpress opérer avec <a href="http://codex.wordpress.org/Function_Reference/wp_head"><code>wp_head</code></a> et <a href="http://codex.wordpress.org/Function_Reference/wp_footer"><code>wp_footer</code></a></p>
+            </div>
+          </section>
+          <section>
+            <h1>Style de l'éditeur de texte</h1>
+            <div style="text-align: left;">
+              <p>Il est possible d'adapter le style de l'éditeur de saisie de WordPress.<br/>Pour cela il faut utiliser <strong><a href="https://codex.wordpress.org/Editor_Style">Editor Style</a></strong> :</p>
+              <pre><code class="php">
+  add_editor_style();
+
+  add_editor_style( 'css/custom-editor-style.css' );
+              </code></pre>
+              <p>Par défaut le fichier <code>editor-style.css</code> est utilisé.</p>
+            </div>
+          </section>
+        </section>
+<!--3-------------------------------------------------------------------------->
+        <section class="stack">
+          <section>
+            <h1>3. <code>actions</code> et <code>filters</code></h1>
+          </section>
+          <section>
+            <h1>Un concept intéressant</h1>
+            <div style="text-align: left;">
+              <p>Dans le coeur Wordpress, des actions sont "appliquées" partout.</p>
+              <ul>
+                <li>Elles permettent d'insérer du code pour manipuler le comportement de base</li>
+                <li>Elles sont utiles dans le template ou dans l'admin</li>
+              </ul>
+              <p>Elles apportent une grande modularité dans la gestion du site.</p>
+            </div>
+          </section>
+          <section>
+            <h1>Mais une complexité importante</h1>
+            <div style="text-align: left;">
+              <p>Le code à écrire pour les utiliser n'est pas très simple et le comportement des actions n'est pas toujours très bien documenté</p>
+              <ul>
+                <li>Création de fonction de callback</li>
+                <li>Liste de paramètres obscure</li>
+                <li>Modification à apporter pas toujours identiques</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Exemple</h1>
+            <div style="text-align: left;">
+            <pre><code class="php">
+  function ek_theme_setup()
+  {
+    //Load localisation
+    load_theme_textdomain('ek', get_template_directory() . '/languages');
+
+    //Enhance theme support
+    add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'menus' );
+
+    //Register specific image sizes
+    add_image_size( 'blog-thumb', 136, 126, true );
+  }
+  add_action( 'after_setup_theme', 'ek_theme_setup' );
+              </code></pre>
+              <p>Pour une liste de toutes les actions, voir sur le <a href="http://codex.wordpress.org/Plugin_API/Action_Reference">Codex</a></p>
+            </div>
+          </section>
+          <section>
+            <h1>Idem pour les <code>filters</code></h1>
+            <div style="text-align: left;">
+              <p>Les <code>filters</code> sont utilisés partout dans Wordpress. Contrairement aux actions, ils sont appliqués à chaque traitement sur les données pour permettre de les manipuler.</p>
+            <pre><code class="php">
+  function wpse_custom_order($clauses)
+  {
+    global $wp_query;
+
+    // check for order by custom_order
+    if (isset($clauses['where']) && strpos($clauses['where'], 'postmeta.meta_key') !== false ) {
+      $clauses['join'] = str_replace('INNER JOIN', 'LEFT JOIN', $clauses['join']).$clauses['where'];
+      $clauses['where'] = '';
+    }
+    return $clauses;
+  }
+  add_filter('get_meta_sql', 'wpse_custom_order', 10, 1);
+              </code></pre>
+            </div>
+          </section>
+          <section>
+            <h1>Quelques-uns vraiment utiles</h1>
+            <div style="text-align: left;">
+              <p>Pour les <a href="https://codex.wordpress.org/Plugin_API/Action_Reference"><code>actions</code></a> :</p>
+              <ul>
+                <li><code><a href="https://codex.wordpress.org/Plugin_API/Action_Reference/after_setup_theme">after_setup_theme</a></code> : Généralement utilisé pour initialiser les paramètre et options du thème</li>
+                <li><code><a href="https://codex.wordpress.org/Plugin_API/Action_Reference/plugins_loaded">plugins_loaded</a></code> : Généralement utilisé pour initialiser les paramètre et options d'un plugin</li>
+                <li><code><a href="https://codex.wordpress.org/Plugin_API/Action_Reference/template_redirect">template_redirect</a></code> : Permet d'intervenir au moment du choix du template</li>
+                <li><code><a href="https://codex.wordpress.org/Plugin_API/Action_Reference/wp_enqueue_scripts">wp_enqueue_scripts</a></code> : Pour charger tous les styles et scripts sur le front</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Quelques-uns vraiment utiles</h1>
+            <div style="text-align: left;">
+              <p>Pour les <a href="https://codex.wordpress.org/Plugin_API/Filter_Reference"><code>filters</code></a> :</p>
+              <ul>
+                <li><code><a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/previous_posts_link_attributes">previous_posts_link_attributes</a></code>, <code><a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/next_posts_link_attributes">next_posts_link_attributes</a></code>, <code><a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/previous_comments_link_attributes">previous_comments_link_attributes</a></code>, <code><a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/next_comments_link_attributes">next_comments_link_attributes</a></code></li>
+                <li><code><a href="https://codex.wordpress.org/Plugin_API/Action_Reference/tiny_mce_before_init">tiny_mce_before_init</a></code> : Pour adapter TinyMCE</li>
+                <li><code><a href="https://codex.wordpress.org/Plugin_API/Action_Reference/image_size_names_choose">image_size_names_choose</a></code> : Pour définir les formats d'images autorisés dans le contenu</li>
+              </ul>
+            </div>
+          </section>
+        </section>
+<!--4-------------------------------------------------------------------------->
+        <section class="stack">
+          <section>
+            <h1>4. Gestion des médias</h1>
+          </section>
+          <section>
+            <h1>Les utiliser dans les templates</h1>
+            <div style="text-align: left;">
+              <p>Les médias renseignés dans la bibliothèque peuvent être utilisés dans les templates en affichage (bandeau de header par exemple)</p>
+              <pre><code class="php">
+  //Afficher l'image 1 en taille full
+  wp_get_attachment_image(1, 'full');
+
+  //Récupérer l'URL de l'image 18 en taille thumbnail
+  wp_get_attachment_image_src(1, 'thumbnail');
+              </code></pre>
+            </div>
+          </section>
+          <section>
+            <h1>Générer des formats spécifiques</h1>
+            <div style="text-align: left;">
+              <p>Il peut être intéressant de définir des formats d'image spécifiques pour optimiser les chargement des page.</p>
+              <p>On ajoute dans le fichier <code>functions.php</code>:</p>
+              <pre><code class="php">
+  //Format 136x126 avec crop
+  add_image_size( 'blog-thumb', 136, 126, true );
+              </code></pre>
+              <p>Et on utilise de la même façon:</p>
+              <pre><code class="php">
+  //Format 136x126 avec crop
+  wp_get_attachment_image(1, 'blog-thumb');
+              </code></pre>
+            </div>
+          </section>
+          <section>
+            <h1>Images à la une</h1>
+            <div style="text-align: left;">
+              <p>Une fonctionalité cachée à activer dans votre <code>functions.php</code>. Elle permet d'associer une image à un article.</p>
+              <p>On ajoute dans le fichier <code>functions.php</code>:</p>
+              <pre><code class="php">
+  //Activation du "post-thumbnails"
+  add_theme_support( 'post-thumbnails' );
+              </code></pre>
+              <p>Et on utilise ensuite:</p>
+              <pre><code class="php">
+  //Format 136x126 avec crop
+  if( has_post_thumbnail() ) {
+    the_post_thumbnail('full', $attrs);
+  }
+              </code></pre>
+            </div>
+          </section>
+        </section>
+<!--5-------------------------------------------------------------------------->
+        <section class="stack">
+          <section>
+            <h1>5. Sécurité</h1>
+          </section>
+          <section>
+            <h1>Affichage en front</h1>
+            <div style="text-align: left;">
+              <p>Il ne faut jamais afficher en front une donnée saisie par l'utilisateur.</p>
+              <p>Les fonctions natives utilisent par défaut le mécanisme d'échappement.</p>
+              <pre><code class="php">
+  the_title();
+  esc_js(...);
+  esc_html(...);
+  esc_attr(...);
+  esc_textarea(...);
+  esc_url(...);
+              </code></pre>
+            </div>
+          </section>
+          <section>
+            <h1>Enregistrement en BDD</h1>
+            <div style="text-align: left;">
+              <p>Il ne faut jamais enregistrer en BDD une donnée non "escapée".</p>
+              <p>Il ne faut jamais intégrer dans une requête SQL des données utilisateur non "escapée".</p>
+              <pre><code class="php">
+  mysql_real_escape_string(...);
+  esc_like(...);
+  esc_sql(...);
+              </code></pre>
+            </div>
+          </section>
+        </section>
+<!--6-------------------------------------------------------------------------->
+        <section class="stack">
+          <section>
+            <h1>6. Concepts avancés</h1>
+          </section>
+          <section>
+            <h1><code>WP_Query</code> </h1>
+          </section>
+          <section>
+            <h1>Requête sur les données</h1>
+            <div style="text-align: left;">
+              <p><code>WP_Query</code> est l'objet qui encapsule la logique de requête sur les données.</p>
+              <ul>
+                <li>Il permet d'initialiser <a href="./session2.html#/5/16">la boucle</a></li>
+                <li>Il est au coeur de la récupération et l'affichage de toutes les informations</li>
+                <li>La <a href="http://codex.wordpress.org/Class_Reference/WP_Query">documentation Codex</a> est complète à son sujet</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Exemple général</h1>
+            <div style="text-align: left;">
+              <pre><code class="php">
+  $query = new WP_Query( $args );
+  // The Loop
+  if ( $query->have_posts() ) {
+    while ( $query->have_posts() ) {
+      $query->the_post();
+      the_title(); //Affichage du titre
+    }
+  } else {
+    // no posts found
+  }
+  /* Restore original Post Data */
+  wp_reset_postdata();
+              </code></pre>
+              <p>ATTENTION: L'utilisation de <a href="http://codex.wordpress.org/Function_Reference/wp_reset_postdata"><code>wp_reset_postdata</code></a> est très importante, sinon le contexte d'exécution générale devient instable</p>
+            </div>
+          </section>
+          <section>
+            <h1>Le contexte d'exécution</h1>
+            <div style="text-align: left;">
+              <p>Grâce à <a href="./session2.html#/5/16">la boucle</a>, le contexte d'éxecution courant est complétement surchargé. Toutes les méthodes d'accès générique aux données sont "branchées" sur le <code>post</code> en cours d'itération, par exemple :</p>
+              <ul>
+                <li><code><a href="http://codex.wordpress.org/Function_Reference/the_title">the_title()</a></code></li>
+                <li><code><a href="http://codex.wordpress.org/Function_Reference/the_date">the_date()</a></code></li>
+                <li><code><a href="http://codex.wordpress.org/Function_Reference/the_content">the_content()</a></code></li>
+                <li>Voir le <a href="http://codex.wordpress.org/Template_Tags">Codex</a> pour une liste exhaustive</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Les commentaires</h1>
+          </section>
+          <section>
+            <h1>Qu'est-ce que c'est ?</h1>
+            <div>
+              <ul>
+                <li>C'est un type de contenu particulier qui est toujours rattaché à un autre contenu.</li>
+                <li>Ils sont administrables dans le back office.</li>
+                <li>L'affichage des commentaires peut être fait de plusieurs façons :</li>
+                <ul>
+                  <li><code><a href="https://developer.wordpress.org/reference/functions/comments_template/">comments_template</a></code> dans le détail d'un article</li>
+                  <li>Créer un fichier <code>comments.php</code> pour paramétrer l'affichage</li>
+                </ul>
+              </ul>
+              <p style="text-align: left;"><span class="fa fa-warning"></span>&nbsp; Il ne faut pas créer un formulaire et essayer de soumettre les commentaires sans passer par l'API WordPress, c'est un risque important pour la sécurité du site !</p>
+            </div>
+          </section>
+          <section>
+            <h1>Les menus</h1>
+          </section>
+          <section>
+            <h1>Qu'est-ce que c'est ?</h1>
+            <div>
+              <ul>
+                <li>Les menus sont des listes de liens paramétrables dans le back office.</li>
+                <li>Il est possible d'en déclarer plusieurs dans le thème pour gérer l'affichage du footer, des liens sociaux...</li>
+                <li>Un comportement par défaut simple :</li>
+                <ul>
+                  <li>Activation de la fonction "cachée"</li>
+                  <li>Déclaration d'un ou plusieurs menus dans le <code>functions.php</code></li>
+                  <li>Affichage dans le site</li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Exemple</h1>
+            <div style="text-align: left;">
+              <p>Dans l'action <code>after_setup_theme</code> :</p>
+              <pre><code class="php">
+  add_theme_support( 'menus' );
+  register_nav_menu( "main", "Menu principal");
+              </code></pre>
+              <p>Dans le thème :</p>
+              <pre><code class="php">
+  wp_nav_menu(array('theme_location' => 'main'));
+              </code></pre>
+            </div>
+          </section>
+          <section>
+            <h1>Meta Box</h1>
+          </section>
+          <section>
+            <h1>Qu'est-ce que c'est ?</h1>
+            <div>
+              <ul>
+                <li>Les "Méta Box" sont des morceaux d'interface d'administration dans WordPress.</li>
+                <li>Il est possible d'en créer pour ajouter des champs dans un type de contenu particulier (URL du site pour un projet de portfolio par exemple).</li>
+                <li>Attention c'est assez complexe :</li>
+                <ul>
+                  <li>Construire l'interface, les champs et les boutons</li>
+                  <li>Gérer l'enregistrement dans la base de données</li>
+                  <li>Afficher la valeur sauvegardée lors de l'édition d'un contenu</li>
+                  <li>Tout est à faire des le fichier <code>functions.php</code></li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Ok...</h1>
+            <div>
+              <ul>
+                <li>Un ensemble de fonction et d'action :</li>
+                <ul>
+                  <li><a href="https://developer.wordpress.org/reference/functions/add_meta_box/">add_meta_box</a> pour la déclarer</li>
+                  <li><a href="https://developer.wordpress.org/reference/hooks/add_meta_boxes/">add_meta_boxes</a> action pour l'activer</li>
+                  <li><a href="https://developer.wordpress.org/reference/functions/update_post_meta/">update_post_meta</a> pour enregistrer</li>
+                  <li><a href="https://developer.wordpress.org/reference/functions/get_post_meta/">get_post_meta</a> pour récupérer</li>
+                </ul>
+                <li>Un tuto très complet en français: </li>
+                <ul>
+                  <li><a href="https://wabeo.fr/jouons-avec-les-meta-boxes/">https://wabeo.fr/jouons-avec-les-meta-boxes/</a></li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Sidebar</h1>
+          </section>
+          <section>
+            <h1>Qu'est-ce que c'est ?</h1>
+            <div>
+              <ul>
+                <li>C'est simplement, une colonne verticale contenant des widgets et affichée en complément du contenu de la page.</li>
+                <li>La plupart des thèmes intègre une "sidebar".</li>
+                <li>Les widgets à utiliser sont personnalisables dans le configurateur de thème.</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Comment les utiliser ?</h1>
+            <div>
+              <ul>
+                <li>Appeler la fonction <code><a href="https://developer.wordpress.org/reference/functions/get_sidebar/">get_sidebar</a></code> dans la page au même titre que <code><a href="https://developer.wordpress.org/reference/functions/get_header/">get_header</a></code> ou <code><a href="https://developer.wordpress.org/reference/functions/get_footer/">get_footer</a></code></li>
+                <ul>
+                  <li>Permet de définir son emplacement</li>
+                  <li>Tous les gabarits n'en utilisent pas forcément une !</li>
+                </ul>
+                <li>L'affichage est contrôlé par le fichier <code>sidebar.php</code> à la racine de votre thème</li>
+                <li>Si pas de fichier <code>sidebar.php</code>, un template par défaut est utilisé</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Exemple</h1>
+            <div style="text-align: left;">
+              <p>Dans l'action <code>after_setup_theme</code> :</p>
+              <pre><code class="php">
+  register_sidebar(array('name' => 'Ma sidebar', 'id' => 'sidebar-1'));
+              </code></pre>
+              <p>Dans <code>sidebar.php</code> :</p>
+              <pre><code class="php">
+  if( is_active_sidebar( 'sidebar-1' )  ):
+    dynamic_sidebar( 'sidebar-1' );
+  endif;
+              </code></pre>
+            </div>
+          </section>
+          <section>
+            <h1>Les widgets</h1>
+            <div style="text-align: left;">
+              <ul>
+                <li>Une fois les "sidebar" déclarées, vous pouvez ajouter des widgets à l'intérieur.</li>
+                <ul>
+                  <li>Une liste de widget est dispo par défaut</li>
+                  <li>Liste de catégories, nuage de liens...</li>
+                </ul>
+                <li>Sinon on peut en déclarer de nouveaux:</li>
+                <ul>
+                  <li>La documentation: <a href="https://codex.wordpress.org/Widgets_API">https://codex.wordpress.org/Widgets_API</a></li>
+                  <li>Un développement un peu complexe (héritage de classe)</li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Quelques liens utiles</h1>
+            <div>
+              <ul>
+                <li><a href="https://generatewp.com">https://generatewp.com</a></li>
+                <li><a href="https://codex.wordpress.org">https://codex.wordpress.org</a></li>
+                <li><a href="https://developer.wordpress.org/">https://developer.wordpress.org</a></li>
+                <li><a href="https://wabeo.fr/">https://wabeo.fr</a></li>
+                <li><a href="http://www.seomix.fr/">http://www.seomix.fr/</a></li>
+              </ul>
+            </div>
+          </section>
+        </section>
+<!--7-------------------------------------------------------------------------->
+        <section class="stack">
+          <section>
+            <h1>7. WP-CLI à la rescousse</h1>
+          </section>
+          <section>
+            <h1>Pourquoi ?</h1>
+            <p><code>wp-cli</code> est un outil en ligne de commande pour intéragir avec WordPress. Il facilite la gestion et la maintenance du site.</p>
+            <pre><code>
+  curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+  mv wp-cli.phar wp
+  chmod +x wp
+            </code></pre>
+          </section>
+          <section>
+            <h1>Pour générer du code</h1>
+            <div style="width: 140%; margin-left: -20%">
+              <ul>
+                <li>Pour un type personnalisé:</li>
+                <ul>
+                  <li><code>wp scaffold post-type mon-type</code></li>
+                </ul>
+                <li>Pour un thème enfant:</li>
+                <ul>
+                  <li><code>wp scaffold child-theme mon-theme --parent_theme=twentysixteen</code></li>
+                </ul>
+                <li>Pour un plugin:</li>
+                <ul>
+                  <li><code>wp scaffold plugin mon-plugin</code></li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Pour les médias</h1>
+            <div>
+              <ul>
+                <li>Regénérer toutes les miniatures:</li>
+                <ul>
+                  <li><code>wp medias regenerate --yes</code></li>
+                </ul>
+                <li>Regénérer pour un media (ici id=10):</li>
+                <ul>
+                  <li><code>wp medias regenerate 10 --yes</code></li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Pour la BDD</h1>
+            <div>
+              <ul>
+                <li>Sauvegarder:</li>
+                <ul>
+                  <li><code>wp db export file.sql</code></li>
+                </ul>
+                <li>Restaurer:</li>
+                <ul>
+                  <li><code>wp db import file.sql</code></li>
+                </ul>
+                <li>Requêter:</li>
+                <ul>
+                  <li><code>wp db query "SELECT COUNT(*) FORM wp_posts"</code></li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Pour le coeur de WP</h1>
+            <div>
+              <ul>
+                <li>Installer:</li>
+                <ul>
+                  <li><code>wp core install</code></li>
+                </ul>
+                <li>Mettre à jour:</li>
+                <ul>
+                  <li><code>wp core update</code></li>
+                </ul>
+                <li>Autres manips:</li>
+                <ul>
+                  <li><code>wp core check-update</code></li>
+                  <li><code>wp core is-installed</code></li>
+                  <li><code>wp core language</code></li>
+                </ul>
+              </ul>
+            </div>
+          </section>
+        </section>
+<!--#########################################################################-->
+        <section id="rendu">
+          <h1>Rendu</h1>
+          <div style="text-align: left;">
+            <p><strong>Objectif:</strong> Finaliser le thème HTML5UP.</p>
+            <ul>
+              <li>Template d'affichage de catégorie</li>
+              <ul>
+                <li>Affichage de la description de la catégorie</li>
+                <li>Liste avec pagination</li>
+                <li>Utilisation de l'image d'en-tête dans la liste</li>
+              </ul>
+              <li>Template d'affichage de page</li>
+              <li>Création d'un type de contenu personnalisé <code>client</code></li>
+              <li>Template d'affichage d'un client</li>
+            </ul>
+          </div>
+        </section>
+        <section data-background-color="rgba( 0, 174, 239, 0.8 )">
+        </section>
+      </div>
+
+    </div>
+
+    <script src="../../../assets/reveal.js/lib/js/head.min.js"></script>
+    <script src="../../../assets/reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: false,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: '../../../assets/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../../../assets/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../../../assets/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../../../assets/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '../../../assets/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '../../../assets/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+  </body>
+</html>
