@@ -23,11 +23,11 @@
 
     <!-- Printing and PDF exports -->
     <script>
-      var link = document.createElement( 'link' );
-      link.rel = 'stylesheet';
-      link.type = 'text/css';
-      link.href = window.location.search.match( /print-pdf/gi ) ? '../../../assets/reveal.js/css/print/pdf.css' : '../../../assets/reveal.js/css/print/paper.css';
-      document.getElementsByTagName( 'head' )[0].appendChild( link );
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? '../../../assets/reveal.js/css/print/pdf.css' : '../../../assets/reveal.js/css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
 
     <!--[if lt IE 9]>
@@ -40,17 +40,17 @@
     <div class="reveal concave center">
       <p class="global-footer">
         <a href="https://chstudio.fr"><img src="../../../logo.png" width="20" /></a>
-        2016/2017&nbsp;-&nbsp;ICOM Université Lyon 2&nbsp;-&nbsp;DUCCI 1
+        2019/2020&nbsp;-&nbsp;ICOM Université Lyon 2&nbsp;-&nbsp;DUCCI
       </p>
 
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
-        <section data-background-color="rgba( 0, 174, 239, 0.6 )">
+        <section data-background-color="rgba( 0, 174, 239, 0.8 )">
           <h1>WordPress</h1>
           <p>Création de thème, règles et outils</p>
         </section>
-        <section id="who-i-am" data-background-color="rgba( 0, 174, 239, 0.6 )">
-          <h1>Stéphane HULARD<br/><small>Expert technique</small></h1>
+        <section id="who-i-am" data-background-color="rgba( 0, 174, 239, 0.8 )">
+          <h1>Stéphane HULARD<br/><small>Consultant / Formateur</small></h1>
           <table class="no-border">
             <tbody>
               <tr><td><span class="fa fa-building-o"></td><td><a href="https://chstudio.fr">https://chstudio.fr</a></td></tr>
@@ -186,18 +186,6 @@
   add_action('wp_enqueue_scripts', 'montheme_scripts');
               </code></pre>
               <p>Ensuite on laisse la magie de Wordpress opérer avec <a href="http://codex.wordpress.org/Function_Reference/wp_head"><code>wp_head</code></a> et <a href="http://codex.wordpress.org/Function_Reference/wp_footer"><code>wp_footer</code></a></p>
-            </div>
-          </section>
-          <section>
-            <h1>Style de l'éditeur de texte</h1>
-            <div style="text-align: left;">
-              <p>Il est possible d'adapter le style de l'éditeur de saisie de WordPress.<br/>Pour cela il faut utiliser <strong><a href="https://codex.wordpress.org/Editor_Style">Editor Style</a></strong> :</p>
-              <pre><code class="php">
-  add_editor_style();
-
-  add_editor_style( 'css/custom-editor-style.css' );
-              </code></pre>
-              <p>Par défaut le fichier <code>editor-style.css</code> est utilisé.</p>
             </div>
           </section>
         </section>
@@ -679,24 +667,22 @@
           </section>
         </section>
 <!--#########################################################################-->
-        <section id="rendu">
+        <section id="rendu" data-background-color="rgba( 0, 174, 239, 0.8 )">
           <h1>Rendu</h1>
           <div style="text-align: left;">
             <p><strong>Objectif:</strong> Finaliser le thème HTML5UP.</p>
             <ul>
-              <li>Template d'affichage de catégorie</li>
+              <li>Un thème opérationnel: indentation, sécurité, structure et traduction</li>
+              <li>Modifier le nom du thème pour qu'il s'appelle [Nom] [Prénom]</li>
+              <li>Template d'affichage de page et d'article basé sur <code>generic.html</code></li>
               <ul>
-                <li>Affichage de la description de la catégorie</li>
-                <li>Liste avec pagination</li>
-                <li>Utilisation de l'image d'en-tête dans la liste</li>
+                <li>Affichage de l'image à la une</li>
+                <li>Affichage du titre</li>
+                <li>Affichage du contenu complet</li>
               </ul>
-              <li>Template d'affichage de page</li>
-              <li>Création d'un type de contenu personnalisé <code>client</code></li>
-              <li>Template d'affichage d'un client</li>
+              <li>Intégrer la pagination sur la page d'accueil.</li>
             </ul>
           </div>
-        </section>
-        <section data-background-color="rgba( 0, 174, 239, 0.6 )">
         </section>
       </div>
 

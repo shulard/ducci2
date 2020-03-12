@@ -12,7 +12,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
     <link rel="stylesheet" href="../../../assets/reveal.js/css/reveal.css">
     <link rel="stylesheet" href="../../../assets/css/font-awesome.min.css">
@@ -21,15 +21,13 @@
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="../../../assets/css/solarized-dark.css">
 
-    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <!-- Printing and PDF exports -->
     <script>
-      if( window.location.search.match( /print-pdf/gi ) ) {
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = '../../../assets/reveal.js/css/print/pdf.css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? '../../../assets/reveal.js/css/print/pdf.css' : '../../../assets/reveal.js/css/print/paper.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
-      }
     </script>
 
     <!--[if lt IE 9]>
@@ -42,17 +40,17 @@
     <div class="reveal concave center">
       <p class="global-footer">
         <a href="https://chstudio.fr"><img src="../../../logo.png" width="20" /></a>
-        2016/2017&nbsp;-&nbsp;ICOM Université Lyon 2&nbsp;-&nbsp;DUCCI
+        2019/2020&nbsp;-&nbsp;ICOM Université Lyon 2&nbsp;-&nbsp;DUCCI
       </p>
 
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
-        <section data-background-color="rgba( 0, 174, 239, 0.6 )">
+        <section data-background-color="rgba( 0, 174, 239, 0.8 )">
           <h1>Systèmes de gestion de contenu</h1>
           <p>Pourquoi? Quoi? Comment?</p>
         </section>
-        <section id="who-i-am" data-background-color="rgba( 0, 174, 239, 0.6 )">
-          <h1>Stéphane HULARD<br/><small>Expert technique indépendant</small></h1>
+        <section id="who-i-am" data-background-color="rgba( 0, 174, 239, 0.8 )">
+          <h1>Stéphane HULARD<br/><small>Consultant / Formateur</small></h1>
           <table class="no-border">
             <tbody>
               <tr><td><span class="fa fa-building-o"></td><td><a href="https://chstudio.fr">https://chstudio.fr</a></td></tr>
@@ -111,9 +109,6 @@
           </section>
           <section>
             <h1>Et maintenant...<br/><small>Des interfaces riches et complexes</small></h1>
-            <div>
-              <img src="img/session1/facebook.png" />
-            </div>
           </section>
           <section>
             <h1>Une évolution fulgurante</h1>
@@ -728,7 +723,7 @@
           </section>
         </section>
 <!--#########################################################################-->
-        <section data-background-color="rgba( 0, 174, 239, 0.6 )"></section>
+        <section data-background-color="rgba( 0, 174, 239, 0.8 )"></section>
       </div>
 
     </div>
